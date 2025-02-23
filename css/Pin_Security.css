@@ -1,0 +1,68 @@
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url('../images/admin_page_bg.png') no-repeat center center/cover;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f9f6ed;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        width: 800px;
+        height: 500px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .error {
+        color: red;
+        margin-bottom: 15px;
+    }
+
+    .pin-inputs {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .pin-box {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        text-align: center;
+        border: 2px solid #00aaff;
+        border-radius: 8px;
+        outline: none;
+        background-color: white;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff4d4d;
+        color: white;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #cc0000;
+    }

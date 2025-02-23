@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../images/admin_page_bg.png') no-repeat center center/cover;
+}
+
+.container {
+    display: flex;
+    width: 1000px;
+    height: 750px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+
+.left-panel {
+    background: #f5f2e9; 
+    width: 60%;
+    height: 110%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 100px; 
+}
+h1 {
+    font-family: 'Bagel Fat One', sans-serif;
+    font-size: 64px;
+    font-weight: normal; 
+    color: rgba(44, 73, 87, 1);
+    text-align: center;
+}
+
+h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+p{
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: 400; 
+    letter-spacing: 0.5px;
+    margin-top: -30px;
+}
+
+.right-panel {
+    background: #1d3c54; 
+    width: 60%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 100%;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    background: transparent;
+    color: white;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    color: #24475c;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #ddd;
+}
