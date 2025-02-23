@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <h1 class="dashboard">Dashboard</h1>
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="/CC106/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
-            <div class="logo"><img src="../images/Logo.png" alt="Logo" class="logo-img"></div>
+            <div class="logo"><img src="/CC106/images/Logo.png" alt="Logo" class="logo-img"></div>
             <nav>
                 <ul>
                     <li class="active"><i class="fa-solid fa-tachometer-alt"></i> Dashboard</li>
@@ -25,8 +25,8 @@
                 <div class="date-time">&nbsp;</div>
             </header>
             <section class="video-section">
-                <div class="video-feed" id="camera1"><img src="../images/4K-IP-camera-infrared-scaled 2.png" alt="Camera 1"></div>
-                <div class="video-feed" id="camera2"><img src="../images/4K-IP-camera-infrared-scaled 2.png" alt="Camera 2"></div>
+                <div class="video-feed" id="camera1"><img src="/CC106/images/4K-IP-camera-infrared-scaled 2.png" alt="Camera 1"></div>
+                <div class="video-feed" id="camera2"><img src="/CC106/images/4K-IP-camera-infrared-scaled 2.png" alt="Camera 2"></div>
             </section>
             <section class="transactions">
                 <h2>Transactions</h2>
@@ -106,6 +106,6 @@
     </div>
 </body>
 
-<script src="../js/dashboard.js"></script>
+<script src="/CC106/js/dashboard.js"></script>
 </html>
 

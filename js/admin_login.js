@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         const email = form.email.value.trim();
         const password = form.password.value.trim();
+        window.location.href = "../Pin_Security.php";
 
         if (!email || !password) {
             alert("Please fill out both fields.");

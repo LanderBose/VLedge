@@ -11,9 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($enteredPin === $correctPin) {
             // Redirect to the dashboard or another page
-            header("Location: dashboard.php");
+            header("Location: /CC106/php/Dashboard.php");
             exit();
-        } else {
+        } else {    
             // Show error message
             $_SESSION["error"] = "Incorrect PIN. Try again.";
             header("Location: index.php");
@@ -32,7 +32,7 @@ unset($_SESSION["error"]); // Clear error after displaying
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter PIN</title>
-    <link rel="stylesheet" href="../css/Pin_Security.css">
+    <link rel="stylesheet" href="/CC106/css/Pin_Security.css">
 </head>
 <body>
     <div class="container">
@@ -52,6 +52,6 @@ unset($_SESSION["error"]); // Clear error after displaying
             <button type="button" id="cancelButton">Cancel</button>
         </form>
     </div>
-    <script src="../js/pin_security.js"></script>
+    <script src="/CC106/js/pin_security.js"></script>
 </body>
 </html>
