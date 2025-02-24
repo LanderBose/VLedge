@@ -1,31 +1,4 @@
-<?php
-session_start();
 
-// Define the correct PIN
-$correctPin = "123456";
-
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST["pin"]) && is_array($_POST["pin"])) {
-        $enteredPin = implode("", $_POST["pin"]); // Combine array values into a string
-
-        if ($enteredPin === $correctPin) {
-            // Redirect to the dashboard or another page
-            header("Location: /CC106/php/Dashboard.php");
-            exit();
-        } else {    
-            // Show error message
-            $_SESSION["error"] = "Incorrect PIN. Try again.";
-            header("Location: index.php");
-            exit();
-        }
-    }
-}
-
-// Get error message (if exists)
-$errorMessage = isset($_SESSION["error"]) ? $_SESSION["error"] : "";
-unset($_SESSION["error"]); // Clear error after displaying
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +6,7 @@ unset($_SESSION["error"]); // Clear error after displaying
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter PIN</title>
     <link rel="stylesheet" href="/CC106/css/Pin_Security.css">
+    
 </head>
 <body>
     <div class="container">
@@ -52,6 +26,8 @@ unset($_SESSION["error"]); // Clear error after displaying
             <button type="button" id="cancelButton">Cancel</button>
         </form>
     </div>
-    <script src="/CC106/js/pin_security.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>    emailjs.init("5rr0gFf8RlG6Q2UM7");    </script>
+    <script type="module" src="/CC106/js/pin_security.js"></script>
 </body>
 </html>

@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const user = await login(email, password);
             if (user) {
                 console.log("Login successful:", user);
-                window.location.href = "/CC106/php/Dashboard.php"; 
+                  sessionStorage.setItem("userEmail", user.email);
+
+                window.location.href = "/CC106/php/Pin_Security.php"; 
             }
         } catch (error) {
             console.error("Login failed:", error.message);

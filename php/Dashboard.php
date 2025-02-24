@@ -6,8 +6,8 @@
     <h5 class="dashboard">Dashboard</h5>
     <link rel="stylesheet" href="/CC106/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/video.js/dist/video.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js/dist/video-js.min.css">
 </head>
 <body>
     <div class="container">

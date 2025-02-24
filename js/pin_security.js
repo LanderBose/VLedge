@@ -1,14 +1,39 @@
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const pinBoxes = document.querySelectorAll(".pin-box");
-    const pinForm = document.getElementById("pinForm");
     const cancelButton = document.getElementById("cancelButton");
 
+    // Retrieve user's email from sessionStorage
+    const userEmail = sessionStorage.getItem("userEmail");
+    if (!userEmail) {
+        alert("Session expired. Please log in again.");
+        window.location.href = "/CC106/php/Admin_Login.php";
+        return;
+    }
+
+    const pinCode = Math.floor(100000 + Math.random() * 900000).toString();
+    sessionStorage.setItem("pinCode", pinCode); 
+
+    emailjs.send("service_7px3irs", "template_ca1fo8l", {
+        to_email: userEmail,
+        pin_code: pinCode
+    }, "5rr0gFf8RlG6Q2UM7")
+    .then(() => {
+        console.log("PIN sent successfully!");
+    })
+    .catch((error) => {
+        console.error("Error sending PIN:", error);
+    });
+
+    // Handle PIN input
     pinBoxes.forEach((box, index) => {
         box.addEventListener("input", (e) => {
             if (e.target.value.length === 1 && index < pinBoxes.length - 1) {
                 pinBoxes[index + 1].focus();
             }
-            collectPin();
+            validatePin();
         });
 
         box.addEventListener("keydown", (e) => {
@@ -18,16 +43,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    function collectPin() {
+    function validatePin() {
         let enteredPin = Array.from(pinBoxes).map(box => box.value).join("");
+        const storedPin = sessionStorage.getItem("pinCode");
+
         if (enteredPin.length === 6) {
-            // Redirect to Dashboard.php when all 6 digits are entered
-            window.location.href = "/CC106/php/Dashboard.php";
+            if (enteredPin === storedPin) {
+                alert("PIN verified successfully!");
+                window.location.href = "/CC106/php/Dashboard.php"; 
+            } else {
+                alert("Incorrect PIN. Please try again.");
+                pinBoxes.forEach(box => box.value = ""); 
+                pinBoxes[0].focus();
+            }
         }
     }
 
     cancelButton.addEventListener("click", function () {
-        window.location.replace("/CC106/php/Admin_Login.php"); // Redirect correctly
+        window.location.replace("/CC106/php/Admin_Login.php"); 
     });
 
     pinBoxes[0].focus();
