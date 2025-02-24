@@ -23,6 +23,6 @@
             </form>
         </div>
     </div>
-    <script src="/CC106/js/admin_login.js"></script>
+    <script src="/CC106/js/admin_login.js" type="module"></script>
 </body>
 </html>

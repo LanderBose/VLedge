@@ -3,30 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1 class="dashboard">Dashboard</h1>
+    <h5 class="dashboard">Dashboard</h5>
     <link rel="stylesheet" href="/CC106/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <div class="logo"><img src="/CC106/images/Logo.png" alt="Logo" class="logo-img"></div>
-            <nav>
-                <ul>
-                    <li class="active"><i class="fa-solid fa-tachometer-alt"></i> Dashboard</li>
-                    <li><i class="fa-solid fa-file-alt"></i> Transactions</li>
-                    <li><i class="fa-solid fa-users"></i> Registry</li>
-                </ul>
-            </nav>
-        </aside>
+        <div class="sidebar">
+        
+            <div class="tools">
+    
+                <div class="menu-item">
+                    <img src="/CC106/images/Logo.png" class="logo" alt="Logo">
+                </div>
+        
+                <div class="menu-item">
+                    <img src="/CC106/images/dash.png" alt="">
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <img src="/CC106/images/trans.png" alt="">
+                    <span>Transactions</span>
+                </div>
+                <div class="menu-item">
+                    <img src="/CC106/images/group.png" alt="">
+                    <span>Registry</span>
+                </div>
+                <div class="menu-item">
+                    <img src="/CC106/images/logout.png" class="logout"alt="">
+                </div>
+    
+            </div>
+    
+        </div>
+    
         <main class="content">
             <header class="top-bar">
                 <span class="dashboard-title">Dashboard</span>
                 <div class="date-time">&nbsp;</div>
             </header>
             <section class="video-section">
-                <div class="video-feed" id="camera1"><img src="/CC106/images/4K-IP-camera-infrared-scaled 2.png" alt="Camera 1"></div>
-                <div class="video-feed" id="camera2"><img src="/CC106/images/4K-IP-camera-infrared-scaled 2.png" alt="Camera 2"></div>
+             <video id="videoPlayer" class="video-js vjs-default-skin" controls autoplay>
+                <source src="hls/stream.m3u8" type="application/x-mpegURL">
+            </video>
+
+            <video id="videoPlayer" class="video-js vjs-default-skin" controls autoplay>
+                <source src="hls/stream.m3u8" type="application/x-mpegURL">
+            </video>
+
             </section>
             <section class="transactions">
                 <h2>Transactions</h2>
@@ -52,6 +78,51 @@
                                 <td>12:30:00</td>
                                 <td>Entry</td>
                                 <td>Red</td>
+                            </tr>
+                            <tr>
+                                <td>f75...</td>
+                                <td>DEF 5678</td>
+                                <td>Premium</td>
+                                <td>2-14-25</td>
+                                <td>12:45:00</td>
+                                <td>Exit</td>
+                                <td>Blue</td>
+                            </tr>
+                            <tr>
+                                <td>f75...</td>
+                                <td>DEF 5678</td>
+                                <td>Premium</td>
+                                <td>2-14-25</td>
+                                <td>12:45:00</td>
+                                <td>Exit</td>
+                                <td>Blue</td>
+                            </tr>
+                            <tr>
+                                <td>f75...</td>
+                                <td>DEF 5678</td>
+                                <td>Premium</td>
+                                <td>2-14-25</td>
+                                <td>12:45:00</td>
+                                <td>Exit</td>
+                                <td>Blue</td>
+                            </tr>
+                            <tr>
+                                <td>f75...</td>
+                                <td>DEF 5678</td>
+                                <td>Premium</td>
+                                <td>2-14-25</td>
+                                <td>12:45:00</td>
+                                <td>Exit</td>
+                                <td>Blue</td>
+                            </tr>
+                            <tr>
+                                <td>f75...</td>
+                                <td>DEF 5678</td>
+                                <td>Premium</td>
+                                <td>2-14-25</td>
+                                <td>12:45:00</td>
+                                <td>Exit</td>
+                                <td>Blue</td>
                             </tr>
                             <tr>
                                 <td>f75...</td>
@@ -96,7 +167,7 @@
                                 <td>2-14-25</td>
                                 <td>13:45:00</td>
                                 <td>Exit</td>
-                                <td>Green</td>
+                                <td>Green</td>  
                             </tr>
                         </tbody>
                     </table>
@@ -104,8 +175,20 @@
             </section>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5"></script>
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script>
+    var player = videojs('videoPlayer');
+    function updateDateTime() {
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        const formattedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.querySelector('.date-time').innerHTML = `${formattedDate} &nbsp; ${formattedTime}`;
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+</script>
 </body>
-
-<script src="/CC106/js/dashboard.js"></script>
 </html>
 

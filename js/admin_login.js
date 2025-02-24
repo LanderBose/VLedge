@@ -1,3 +1,7 @@
+import {auth} from "admin_login.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("loginForm");
 
