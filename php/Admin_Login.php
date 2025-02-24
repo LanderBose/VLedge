@@ -16,13 +16,13 @@
         </div>
         <div class="right-panel">
             <h2>ADMIN LOGIN</h2>
-            <form action="/CC106/php/Pin_Security.php" method="POST" id="loginForm">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">SUBMIT</button>
+            <form id="loginForm">
+            <input type="email" name="email" id="email" placeholder="Email" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <button type="submit" id ="submit">SUBMIT</button>
             </form>
         </div>
     </div>
-    <script src="/CC106/js/admin_login.js" type="module"></script>
+    <script type="module" src="/CC106/js/admin_login.js" ></script>
 </body>
 </html>

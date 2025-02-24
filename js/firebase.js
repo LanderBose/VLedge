@@ -1,12 +1,7 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {getAuth, getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
   apiKey: "AIzaSyCWHdgLZjdUk5XaCoJUGa5t-_BBtrdvBvk",
   authDomain: "v-chain.firebaseapp.com",
@@ -19,7 +14,38 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
+// Register User
+export function register(email, password) {
+  return createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log("User registered:", userCredential.user);
+      return userCredential.user;
+    })
+    .catch((error) => {
+      console.error("Error registering user:", error.message);
+    });
+}
+
+// Login User
+export async function login(email, password) {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
+  } catch (error) {
+    throw error; 
+  }
+}
+
+// Logout User
+export function logout() {
+  return signOut(auth)
+    .then(() => {
+      console.log("User logged out");
+    })
+    .catch((error) => {
+      console.error("Error logging out:", error.message);
+    });
+}
 export { auth };

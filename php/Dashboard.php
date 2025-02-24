@@ -175,8 +175,7 @@
             </section>
         </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/video.js@7"></script>
-<script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5"></script>
+
     <script src="https://unpkg.com/video.js/dist/video.js"></script>
     <script>
     var player = videojs('videoPlayer');
