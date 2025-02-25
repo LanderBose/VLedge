@@ -8,50 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/video.js/dist/video.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js/dist/video-js.min.css">
+    <link rel="stylesheet" href="/CC106/css/sidebar.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-        
-            <div class="tools">
-    
-                <div class="menu-item">
-                    <img src="/CC106/images/Logo.png" class="logo" alt="Logo">
-                </div>
-        
-                <div class="menu-item">
-                    <img src="/CC106/images/dash.png" alt="">
-                    <span>Dashboard</span>
-                </div>
-                <div class="menu-item">
-                    <img src="/CC106/images/trans.png" alt="">
-                    <span>Transactions</span>
-                </div>
-                <div class="menu-item">
-                    <img src="/CC106/images/group.png" alt="">
-                    <span>Registry</span>
-                </div>
-                <div class="menu-item">
-                    <img src="/CC106/images/logout.png" class="logout"alt="">
-                </div>
-    
-            </div>
-    
-        </div>
-    
-        <main class="content">
+<?php include 'sidebar.php'; ?>  <!-- Include the sidebar -->
+
+            <main class="content">
             <header class="top-bar">
                 <span class="dashboard-title">Dashboard</span>
                 <div class="date-time">&nbsp;</div>
             </header>
             <section class="video-section">
-             <video id="videoPlayer" class="video-js vjs-default-skin" controls autoplay>
-                <source src="hls/stream.m3u8" type="application/x-mpegURL">
-            </video>
-
-            <video id="videoPlayer" class="video-js vjs-default-skin" controls autoplay>
-                <source src="hls/stream.m3u8" type="application/x-mpegURL">
-            </video>
+            <video id="videoPlayer1" class="video-js vjs-default-skin" controls autoplay>
+    <source src="http://localhost/CC106/hls/stream.m3u8" type="application/x-mpegURL">
+</video>      <video id="videoPlayer2" class="video-js vjs-default-skin" controls autoplay>
+    <source src="http://localhost/CC106/hls2/stream2.m3u8" type="application/x-mpegURL">
+</video>
+          
 
             </section>
             <section class="transactions">
@@ -175,10 +148,18 @@
             </section>
         </main>
     </div>
-
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     <script>
-    var player = videojs('videoPlayer');
+ var player1 = videojs('videoPlayer1');
+    var player2 = videojs('videoPlayer2');
+
+    player1.src({ type: "application/x-mpegURL", src: "http://localhost/CC106/hls/stream.m3u8" });
+    player2.src({ type: "application/x-mpegURL", src: "http://localhost/CC106/hls2/stream2.m3u8" });
+
+    player1.play();
+    player2.play();  
+    
     function updateDateTime() {
         const now = new Date();
         const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });

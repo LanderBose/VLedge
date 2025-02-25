@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EAE7DC;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 120px; /* Adjust this based on your sidebar width */
+}
+
+/* Cards */
+.chart-container {
+    background:  #D3CCB2;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.table-container {
+    background: #EAE7DC;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #355A7B; 
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    background: #EAE7DC;
+    transition: background 0.3s ease-in-out;
+    color: #355A7B;
+    border-bottom: 2px solid #D3CCB2; 
+}
+
+th:hover, td:hover {
+    background: #88867d;
+    transform: scale(1.01); 
+}
+
+th {
+    background: #EAE7DC;
+    color: #2C4957;
+    border-bottom: 3px solid #dbd9d0; 
+}
+
+
+tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+tr:hover {
+    background: #ddd;
+    transition: 0.3s;
+}
+
+#pieChart {
+    background-color: #D3CCB2; /* Change this to any color */
+    border: none;  /* Remove any border */
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.chart-container {
+    width: 45%; /* Adjust as needed */
+    width: 950px; /* Increase width */
+    height: 400px; /* Adjust height */
+}
+
+.chart-container.pie {
+    width: 400px;  /* Make the pie chart smaller */
+    height: 400px;
+}
+
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.transactions-title{
+    font-weight: bold;
+    color: #355A7B;
+    border-left: 5px solid #355A7B;
+    padding-left: 10px;
+    font-size: x-large;
+}
