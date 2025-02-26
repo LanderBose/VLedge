@@ -7,13 +7,9 @@ streams = {
     "camera1": {
         "hls_url": "http://localhost/CC106/hls/stream.m3u8",
         "image_path": "C:\\xampp\\htdocs\\CC106\\captures\\plate1.jpg"
-    },
-    "camera2": {
-        "hls_url": "http://localhost/CC106/hls2/stream.m3u8",
-        "image_path": "C:\\xampp\\htdocs\\CC106\\captures\\plate2.jpg"
     }
 }
-
+   
 while True:
     for cam, data in streams.items():
         print(f"\n[INFO] Capturing frame from {cam}...")
@@ -27,7 +23,7 @@ while True:
             print(f"[INFO] Running OpenALPR on {cam} frame...")
 
             # Run OpenALPR and get output
-            alpr_command = f'alpr -c ph "{data["image_path"]}"'
+            alpr_command = f'alpr -c us "{data["image_path"]}"'
             result = subprocess.getoutput(alpr_command)
 
             # Print the recognition result

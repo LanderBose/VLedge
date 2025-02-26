@@ -1,2 +1,5 @@
 hls/*
 hls2/*
+.venv/
+package-lock.json/
+package.json/
