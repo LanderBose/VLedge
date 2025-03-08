@@ -18,13 +18,19 @@
                 <span class="dashboard-title">Dashboard</span>
                 <div class="date-time">&nbsp;</div>
             </header>
+
             <section class="video-section">
-            <video id="videoPlayer1" class="video-js vjs-default-skin" controls autoplay>
-    <source src="http://localhost/CC106/hls/stream.m3u8" type="application/x-mpegURL">
-</video>      <video id="videoPlayer2" class="video-js vjs-default-skin" controls autoplay>
-    <source src="http://localhost/CC106/hls2/stream2.m3u8" type="application/x-mpegURL">
-</video>
-          
+
+                    <video id="camera1" class="video-js vjs-default-skin" controls autoplay></video>
+                    <canvas id="canvas1" style="display:none;"></canvas>
+                    <video id="camera2" class="video-js vjs-default-skin" controls autoplay></video>
+                    <canvas id="canvas2" style="display:none;"></canvas>
+            </section>
+
+                    <h2>Detected Plate on Camera 1:</h2>
+                    <p id="plate1"></p>
+                    <h2>Detected Plate on Camera 2:</h2>
+                    <p id="plate2"></p>
 
             </section>
             <section class="transactions">
@@ -152,17 +158,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     <script type="module" src="/CC106/js/dashboard.js"></script>
 
-    <script>
- var player1 = videojs('videoPlayer1');
-    var player2 = videojs('videoPlayer2');
-
-    player1.src({ type: "application/x-mpegURL", src: "http://localhost/CC106/hls/stream.m3u8" });
-    player2.src({ type: "application/x-mpegURL", src: "http://localhost/CC106/hls2/stream2.m3u8" });
-
-    player1.play();
-    player2.play();  
-  
-</script>
 </body>
 </html>
 

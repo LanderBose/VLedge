@@ -3,4 +3,4 @@ hls2/*
 .venv/
 package-lock.json/
 package.json/
-start_stream.bat/
+node_modules/
