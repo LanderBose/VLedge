@@ -150,6 +150,8 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+    <script type="module" src="/CC106/js/dashboard.js"></script>
+
     <script>
  var player1 = videojs('videoPlayer1');
     var player2 = videojs('videoPlayer2');
@@ -159,15 +161,7 @@
 
     player1.play();
     player2.play();  
-    
-    function updateDateTime() {
-        const now = new Date();
-        const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        const formattedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        document.querySelector('.date-time').innerHTML = `${formattedDate} &nbsp; ${formattedTime}`;
-    }
-    setInterval(updateDateTime, 1000);
-    window.onload = updateDateTime;
+  
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, signOut} from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
 
 
 const firebaseConfig = {
@@ -12,27 +12,31 @@ const firebaseConfig = {
   measurementId: "G-W6LJP752BP"
 };
 
-// Initialize Firebase
+// Initialize Firebase  
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Register User
-export function register(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log("User registered:", userCredential.user);
-      return userCredential.user;
-    })
-    .catch((error) => {
-      console.error("Error registering user:", error.message);
-    });
-}
+// export function register(email, password) {
+//   return createUserWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       console.log("User registered:", userCredential.user);
+//       return userCredential.user;
+//     })
+//     .catch((error) => {
+//       console.error("Error registering user:", error.message);
+//     });
+// }
 
 // Login User
 export async function login(email, password) {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
+    const user = userCredential.user;
+    const idToken = await user.getIdToken();
+
+    document.cookie = `authToken = ${idToken}; path=/; Secure; `
+    return user;
   } catch (error) {
     throw error; 
   }
@@ -41,8 +45,9 @@ export async function login(email, password) {
 // Logout User
 export function logout() {
   return signOut(auth)
-    .then(() => {
-      console.log("User logged out");
+    .then(() => {   
+      alert("User logged out");
+      window.location.href = "/CC106/php/Admin_Login.php";
     })
     .catch((error) => {
       console.error("Error logging out:", error.message);

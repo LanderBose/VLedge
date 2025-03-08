@@ -1,4 +1,4 @@
-import { login, register, logout } from "./firebase.js";
+import { login } from "./firebase.js";
 
 /*
 document.getElementById("register-btn").addEventListener("click", () => {
@@ -7,11 +7,8 @@ document.getElementById("register-btn").addEventListener("click", () => {
   register(email, password);
 });
 */
-  /*
-document.getElementById("logout-btn").addEventListener("click", () => {
-  logout();
-});
-*/
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -27,7 +27,7 @@
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>    emailjs.init("5rr0gFf8RlG6Q2UM7");    </script>
+    <script>    emailjs.init("tsY0ahEWdqVEevENI ");    </script>
     <script type="module" src="/CC106/js/pin_security.js"></script>
 </body>
 </html>

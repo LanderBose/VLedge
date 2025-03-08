@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const pinCode = Math.floor(100000 + Math.random() * 900000).toString();
     sessionStorage.setItem("pinCode", pinCode); 
 
-    emailjs.send("service_7px3irs", "template_ca1fo8l", {
+    emailjs.send("service_nzj75vb", "template_ab5996j", {
         to_email: userEmail,
         pin_code: pinCode
-    }, "5rr0gFf8RlG6Q2UM7")
+    }, "tsY0ahEWdqVEevENI")
     .then(() => {
         console.log("PIN sent successfully!");
     })

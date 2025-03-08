@@ -1,4 +1,3 @@
-<!-- sidebar.php -->
 <div class="sidebar">
     <div class="tools">
         <div class="menu-item">
@@ -25,10 +24,20 @@
 
         <div class="spacer"></div> <!-- Pushes logout down -->
 
-        <div class="menu-item logout">
-            <a href="/CC106/php/logout.php" class="menu-link">
+        <div class="menu-item logout" id="logout" onclick="logout()">
+            <a href="" class="menu-link">
                 <img src="/CC106/images/logout.png" alt="">
             </a>
         </div>
     </div>
 </div>
+<script type="module">
+    import { logout } from "/CC106/js/firebase.js";
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("logout").addEventListener("click", function (event) {
+            event.preventDefault(); 
+            logout();
+        });
+    });
+</script>
