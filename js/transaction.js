@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     new Chart(pieCtx, {
         type: 'pie',
         data: {
-            labels: ['Passenger', 'Commercial', 'Public', 'Special', 'Two-wheeler'],
+            labels: ['PUV', 'Private Vehicles', 'Industrial and Commercial Vehicles', 'Special Vehicles', 'Two-wheeler'],
             datasets: [{
                 data: [12, 8, 8, 8, 64],  
                 backgroundColor: ['blue', 'orange', 'green', 'yellow', 'purple']
@@ -38,17 +38,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     backgroundColor: 'blue'
                 },
                 {
-                    label: 'Commercial',
+                    label: 'Private Vehicles',
                     data: [400, 420, 430, 410, 415],
                     backgroundColor: 'orange'
                 },
                 {
-                    label: 'Public',
+                    label: 'Industrial and Commercial Vehicles',
                     data: [300, 320, 310, 330, 340],
                     backgroundColor: 'green'
                 },
                 {
-                    label: 'Special',
+                    label: 'Special Vehicles',
                     data: [500, 550, 530, 540, 560],
                     backgroundColor: 'yellow'
                 },

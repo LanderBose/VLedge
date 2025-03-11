@@ -451,7 +451,7 @@
             <div class="form-container">
                 <h1>V-Chain<br>REGISTRATION</h1>
                 
-                <form action="process.php" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" name="full_name" placeholder="FULL NAME" required>
                     </div>
@@ -479,10 +479,12 @@
                     <div class="form-group">
                         <select name="vehicle_type" required>
                             <option value="" disabled selected>VEHICLE TYPE</option>
-                            <option value="car">PUV</option>
-                            <option value="motorcycle">Private Vehicles</option>
+                            <option value="commercial">PUV</option>
+                            <option value="private">Private Vehicles</option>
                             <option value="truck">Industrial and Commercial Vehicles</option>
-                            <option value="van">Special Vehicles</option>
+                            <option value="government">Special Vehicles</option>
+                            <option value="motorcycle">Two-Wheeler</option>
+
                         </select>
                     </div>
                     
@@ -516,6 +518,7 @@
                         <input type="file" id="vehicle_image" name="vehicle_images" accept="image/*" multiple onchange="previewImages()">
                         <div id="image-preview"></div>
                     </div>
+                    
 
                     <!-- Improved Image Upload Section -->
                     <div class="terms">

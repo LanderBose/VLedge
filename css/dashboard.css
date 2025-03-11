@@ -63,7 +63,7 @@ body {
 .video-section {
     display: flex;
     justify-content: space-between; 
-    margin: 20px 0;
+    margin: 20px 0 10px 0;
 }
 .video-js {
     width: 49%; 
@@ -94,14 +94,38 @@ th {
     background-color: #f2f2f2;
 }
  
-
-
-
-.logo-img{
-    width: auto;  /* Adjust size as needed */
-    height: auto;  /* Maintain aspect ratio */
+.plate-row1, .plate-row2 {
+    display: inline-block;
+    align-items: center; /* Aligns text vertically */
+    gap: 10px; /* Adds spacing between text and plate */
+    padding-left: 10px;
 }
 
+.plate-container {
+    display: flex;
+    justify-content: space-between; /* Ensures even spacing */
+    width: 100%;
+    color: #355A7B;
+
+}
+
+.plate-block {
+    display: flex;
+    align-items: center; /* Align text and plate number */
+    width: 50%; /* Each section takes half of the width */
+    gap: 10px; /* Adds spacing between text and plate number */
+    padding: 0 15px;
+
+}
+
+.text-plate, .text-plate2{
+    font-weight: bold;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.text-plate2 {
+    padding-left: 15px;
+}
 /* Transactions Section */
 .transactions {
     height: 500px;
@@ -113,7 +137,9 @@ th {
     overflow-x: auto;
     color: #355A7B;
 }
-
+.transactions h2{
+    margin: 5px 0 0 0;
+}
 /* Table Styling */
 .transactions table {
     width: 100%;

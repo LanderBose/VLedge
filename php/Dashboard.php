@@ -26,13 +26,19 @@
                     <video id="camera2" class="video-js vjs-default-skin" controls autoplay></video>
                     <canvas id="canvas2" style="display:none;"></canvas>
             </section>
+            
+            <section class="plate-container">
+                <div class="plate-block">
+                    <p class="text-plate">Detected Plate on Camera 1:</p>
+                    <p id="plate1">ABC 1234</p>
+                </div>
+                <div class="plate-block">
+                    <p class="text-plate2">Detected Plate on Camera 2:</p>
+                    <p id="plate2">XYZ 5678</p>
+                </div>
+    </section>
 
-                    <h2>Detected Plate on Camera 1:</h2>
-                    <p id="plate1"></p>
-                    <h2>Detected Plate on Camera 2:</h2>
-                    <p id="plate2"></p>
-
-            </section>
+     
             <section class="transactions">
                 <h2>Transactions</h2>
                 <div class="table-container">
@@ -41,114 +47,178 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Plate No.</th>
-                                <th>Plate Type</th>
+                                <th>Name</th>
+                                <th>Registration Type</th>
                                 <th>Date</th>
                                 <th>TimeStamp</th>
                                 <th>Access Point</th>
-                                <th>Color</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>f74...</td>
-                                <td>ABC 1234</td>
-                                <td>Standard</td>
-                                <td>2-14-25</td>
-                                <td>12:30:00</td>
-                                <td>Entry</td>
-                                <td>Red</td>
-                            </tr>
-                            <tr>
-                                <td>f75...</td>
-                                <td>DEF 5678</td>
-                                <td>Premium</td>
-                                <td>2-14-25</td>
-                                <td>12:45:00</td>
-                                <td>Exit</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <td>f75...</td>
-                                <td>DEF 5678</td>
-                                <td>Premium</td>
-                                <td>2-14-25</td>
-                                <td>12:45:00</td>
-                                <td>Exit</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <td>f75...</td>
-                                <td>DEF 5678</td>
-                                <td>Premium</td>
-                                <td>2-14-25</td>
-                                <td>12:45:00</td>
-                                <td>Exit</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <td>f75...</td>
-                                <td>DEF 5678</td>
-                                <td>Premium</td>
-                                <td>2-14-25</td>
-                                <td>12:45:00</td>
-                                <td>Exit</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <td>f75...</td>
-                                <td>DEF 5678</td>
-                                <td>Premium</td>
-                                <td>2-14-25</td>
-                                <td>12:45:00</td>
-                                <td>Exit</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <td>f75...</td>
-                                <td>DEF 5678</td>
-                                <td>Premium</td>
-                                <td>2-14-25</td>
-                                <td>12:45:00</td>
-                                <td>Exit</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <td>f76...</td>
-                                <td>GHI 9101</td>
-                                <td>Standard</td>
-                                <td>2-14-25</td>
-                                <td>13:00:00</td>
-                                <td>Entry</td>
-                                <td>Black</td>
-                            </tr>
-                            <tr>
-                                <td>f77...</td>
-                                <td>JKL 1121</td>
-                                <td>Commercial</td>
-                                <td>2-14-25</td>
-                                <td>13:15:00</td>
-                                <td>Exit</td>
-                                <td>White</td>
-                            </tr>
-                            <tr>
-                                <td>f78...</td>
-                                <td>MNO 3141</td>
-                                <td>VIP</td>
-                                <td>2-14-25</td>
-                                <td>13:30:00</td>
-                                <td>Entry</td>
-                                <td>Gray</td>
-                            </tr>
-                            <tr>
-                                <td>f79...</td>
-                                <td>PQR 5161</td>
-                                <td>Standard</td>
-                                <td>2-14-25</td>
-                                <td>13:45:00</td>
-                                <td>Exit</td>
-                                <td>Green</td>  
-                            </tr>
-                        </tbody>
+                <tbody>
+                    <tr>
+                        <td>f74a1b...</td>
+                        <td>ABC 1234</td>
+                        <td>John Doe</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>12:30:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f75c2d...</td>
+                        <td>DEF 5678</td>
+                        <td>Jane Smith</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>12:45:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f76e3f...</td>
+                        <td>GHI 9101</td>
+                        <td>Michael Brown</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>13:00:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f77g4h...</td>
+                        <td>JKL 1121</td>
+                        <td>Emily Davis</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>13:15:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f78i5j...</td>
+                        <td>MNO 3141</td>
+                        <td>Chris Johnson</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>13:30:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f79k6l...</td>
+                        <td>PQR 5161</td>
+                        <td>Sarah Wilson</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>13:45:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f80m7n...</td>
+                        <td>STU 7182</td>
+                        <td>David Lee</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>14:00:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f81o8p...</td>
+                        <td>VWX 9202</td>
+                        <td>Olivia Martinez</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>14:15:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f82q9r...</td>
+                        <td>YZA 3245</td>
+                        <td>James Anderson</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>14:30:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f83s0t...</td>
+                        <td>BCD 6789</td>
+                        <td>Jessica White</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>14:45:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f84u1v...</td>
+                        <td>EFG 1357</td>
+                        <td>Matthew Harris</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>15:00:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f85w2x...</td>
+                        <td>HIJ 2468</td>
+                        <td>Sophia Clark</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>15:15:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f83s0t...</td>
+                        <td>BCD 6789</td>
+                        <td>Jessica White</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>14:45:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f84u1v...</td>
+                        <td>EFG 1357</td>
+                        <td>Matthew Harris</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>15:00:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f85w2x...</td>
+                        <td>HIJ 2468</td>
+                        <td>Sophia Clark</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>15:15:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f83s0t...</td>
+                        <td>BCD 6789</td>
+                        <td>Jessica White</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>14:45:00</td>
+                        <td>Exit</td>
+                    </tr>
+                    <tr>
+                        <td>f84u1v...</td>
+                        <td>EFG 1357</td>
+                        <td>Matthew Harris</td>
+                        <td>Resident</td>
+                        <td>2-14-25</td>
+                        <td>15:00:00</td>
+                        <td>Entry</td>
+                    </tr>
+                    <tr>
+                        <td>f85w2x...</td>
+                        <td>HIJ 2468</td>
+                        <td>Sophia Clark</td>
+                        <td>Guest</td>
+                        <td>2-14-25</td>
+                        <td>15:15:00</td>
+                        <td>Exit</td>
+                    </tr>
+                </tbody>
+
                     </table>
                 </div>
             </section>
