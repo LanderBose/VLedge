@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/video.js/dist/video.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js/dist/video-js.min.css">
     <link rel="stylesheet" href="/CC106/css/sidebar.css">
+    <link rel="stylesheet" href="/CC106/css/modal.css">
 </head>
 <body>
 <?php include 'sidebar.php'; ?>  <!-- Include the sidebar -->
@@ -224,10 +225,34 @@
             </section>
         </main>
     </div>
+
+
+  <!-- Error Modal -->
+  <div id="errorModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-icon error-icon">&#10006;</div> <!-- Red X icon -->
+        <h2 class="modal-title error-title">Error!</h2>
+        <p>The plate number is not recognized. Please register it first.</p>
+        <button id="retryButton" class="modal-button retry-button">Retry</button>
+        </div>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-icon success-icon">&#10004;</div> <!-- Green check icon -->
+        <h2 class="modal-title success-title">Success!</h2>
+        <p>The plate number <span id="plateNumber" class="plate-number">ABC 1234</span> has been successfully registered.</p>
+        <button class="modal-button ok-button">OK</button>
+    </div>
+</div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+ 
     <script type="module" src="/CC106/js/dashboard.js"></script>
-
+    
 </body>
 </html>
 

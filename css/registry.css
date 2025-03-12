@@ -1,82 +1,120 @@
-body {
-    display: flex;
-    height: 100vh;
-    background-color: #F7F5ED;
+body, html {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
+    background-color: #EAE7DC;
 }
 
 .content {
-    margin-left: 160px; 
+    position: fixed;
+    top: 0;
+    left: 160px; /* Sidebar width */
+    right: 0;
     padding: 20px;
-    width: calc(100% - 160px);
+    background-color: #F7F5ED;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
-h1, h2 {
+.registry-title {
+    font-weight: bold;
+    color: #355A7B;
+    border-left: 5px solid #355A7B;
+    padding-left: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+h2 {
     color: #2c4957;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
-.table-container {
-    width: 100%;
-    overflow-x: auto; /* Enables horizontal scrolling */
-    background-color: white;
-    padding: 10px;
+.table-wrapper {
+    height: calc(100vh - 140px); /* Adjust based on your header height */
+    overflow-y: auto;
+    overflow-x: hidden; /* Changed to auto to allow horizontal scrolling if needed */
     border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #E3DFD2;
+    /* Fix for Firefox */
+    scrollbar-width: thin;
+    /* Fix for Chrome */
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1000px;
-    background-color: #E3DFD2; /* Slightly darker beige */
-    border-radius: 10px;
-    overflow: hidden;
+    min-width: 1200px; /* Increased minimum width */
+    background-color: #E3DFD2;
+    table-layout: fixed; /* For better performance */
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    white-space: nowrap;
-    color: #2C4957; /* Dark navy for text */
-    border-bottom: 1px solid #D3CCB2;
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 th {
-    background-color: #D9D5C8; /* Muted beige for headers */
+    background-color: #D9D5C8;
     font-weight: bold;
     text-transform: uppercase;
+    padding: 12px;
+    text-align: left;
+    color: #2C4957;
+    border-bottom: 3px solid #b8b5b5;
+    /* Fix for sticky header borders */
+    position: sticky;
+    top: 0;
 }
 
-thead th {
-    border-bottom: 3px solid #b8b5b5; /* Even thicker for header */
+/* Define specific widths for each column */
+th:nth-child(1) { width: 15%; } /* ID */
+th:nth-child(2) { width: 12%; } /* Full Name */
+th:nth-child(3) { width: 10%; } /* Contact Number */
+th:nth-child(4) { width: 12%; } /* Address */
+th:nth-child(5) { width: 10%; } /* Registration Type */
+th:nth-child(6) { width: 10%; } /* Vehicle Plate Number */
+th:nth-child(7) { width: 10%; } /* Vehicle Type */
+th:nth-child(8) { width: 10%; } /* Plate Type */
+th:nth-child(9) { width: 8%; }  /* Vehicle Color */
+
+td {
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for text that overflows */
+    color: #2C4957;
+    border-bottom: 1px solid #D3CCB2;
 }
 
-tr {
-    border-bottom: 1px solid #D3CCB2; /* Soft separator */
-}
-
-tr:hover {
-    background-color: #C9C4B8; /* Slightly darker beige */
-    transform: scale(1.01); /* Slight zoom effect */
-    transition: all 0.2s ease-in-out; /* Smooth transition */
+tbody tr:hover {
+    background-color: #C9C4B8;
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
-.table-container {
-    width: 100%;
-    overflow-x: auto; 
-    background-color: #EDE8DB; /* Beige background */
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+/* Fix for hover effect not working properly with transform */
+tbody tr {
+    transition: background-color 0.2s ease-in-out;
 }
 
-.registry-title{
-    font-weight: bold;
-    color: #355A7B;
-    border-left: 5px solid #355A7B;
-    padding-left: 10px;
-    margin: 0px -25px;
-    font-size: 25px;
+/* Add tooltip-like behavior for truncated text */
+td:hover {
+    overflow: visible;
+    white-space: normal;
+    word-break: break-word;
+    background-color: #D9D5C8;
+    position: relative;
+    z-index: 1;
 }

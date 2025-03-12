@@ -1,0 +1,99 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Error icon */
+.error-icon {
+    width: 60px;
+    height: 60px;
+    background: #c0392b; /* Red background */
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+/* Success icon */
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: #27ae60; /* Green background */
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+/* Error title */
+.error-title {
+    color: #c0392b;
+    margin-bottom: 10px;
+}
+
+/* Success title */
+.success-title {
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+/* Plate number styling */
+.plate-number {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Retry button */
+.retry-button {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.retry-button:hover {
+    background: #a93226;
+}
+
+/* OK button */
+.ok-button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.ok-button:hover {
+    background: #219150;
+}
