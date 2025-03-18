@@ -10,7 +10,7 @@
     <img src="/cc106/images/svg.png" alt="" style="width: 100%; height: 150px; max-width: 100vw; display: block; position: relative;">
     <div class="content">
             <div class="left-content">
-                <img src="/cc106/images/img.png" alt="Registration Image">
+                <img src="/cc106/images/LOGO.png" alt="Registration Image" style="width: 400px; height: 400px; margin: -50px 0 0 0 ">
             </div>
             <div class="right-content">
                 <h1>Thank you for filling out the registration form</h1>    

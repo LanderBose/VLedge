@@ -446,13 +446,13 @@
         
         <div class="container">
             <!-- Logo is placed above the form -->
-            <img src="/cc106/images/img.png" alt="V-Chain Logo" class="logo-above-form">
+            <img src="/cc106/images/LOGO.png" alt="V-Chain Logo" class="logo-above-form">
             
             <div class="form-container">
                 <h1>V-Chain<br>REGISTRATION</h1>
                 
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
+                <form id="registrationForm" action="save_registration.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
                         <input type="text" name="full_name" placeholder="FULL NAME" required>
                     </div>
                     
@@ -489,14 +489,15 @@
                     </div>
                     
                     <div class="form-group">
-                        <select name="plate_type" required>
-                            <option value="" disabled selected>PLATE TYPE</option>
-                            <option value="standard">Private Vehicles</option>
-                            <option value="personalized">PUV</option>
-                            <option value="special">Government Vehicles</option>
-                            <option value="special">Motorcycle Plate</option>
-                            <option value="special">Temporary and Special Plates</option>
-                        </select>
+                                <select name="plate_type" required>
+                    <option value="" disabled selected>PLATE TYPE</option>
+                    <option value="standard">Private Vehicles</option>
+                    <option value="personalized">PUV</option>
+                    <option value="special_government">Government Vehicles</option>
+                    <option value="special_motorcycle">Motorcycle Plate</option>
+                    <option value="special_temporary">Temporary and Special Plates</option>
+                </select>
+
                     </div>
                     
                     <div class="form-group">
@@ -515,7 +516,7 @@
 
                     <div class="form-group">
                         <label for="vehicle_image">Upload Vehicle Images:</label>
-                        <input type="file" id="vehicle_image" name="vehicle_images" accept="image/*" multiple onchange="previewImages()">
+                        <input type="file" id="vehicle_image" name="vehicle_images[]" accept="image/*" multiple onchange="previewImages()">
                         <div id="image-preview"></div>
                     </div>
                     
@@ -570,6 +571,8 @@
                 console.log(`File ${i + 1}: ${selectedFiles.files[i].name}`);
             }
         });
+
+        
     </script>
 </body>
 </html>

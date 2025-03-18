@@ -1,13 +1,3 @@
-
-function updateDateTime() {
-    const now = new Date();
-    const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    const formattedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    document.querySelector('.date-time').innerHTML = `${formattedDate} &nbsp; ${formattedTime}`;
-}
-setInterval(updateDateTime, 1000);
-window.onload = updateDateTime;
-
 async function getCameras() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     return devices.filter(device => device.kind === 'videoinput');
@@ -17,22 +7,33 @@ async function startCamera(videoElement, deviceId) {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: deviceId } } });
         videoElement.srcObject = stream;
+
     } catch (error) {
         console.error(`Error accessing camera: ${error}`);
     }
 }
 
+
 async function initializeCameras() {
     const cameras = await getCameras();
-    if (cameras.length < 2) {
-        console.error("Not enough cameras detected.");
+
+    if (cameras.length === 0) {
+        console.error("No cameras detected.");
         return;
     }
 
-    // Start both cameras
-    startCamera(document.getElementById('camera1'), cameras[0].deviceId);
-    startCamera(document.getElementById('camera2'), cameras[1].deviceId);
+    // Always start the first detected camera
+    startCamera(document.getElementById('camera1'), cameras[0].deviceId, cameras[0].label || "Unknown Camera");
+
+    // If a second camera is available, start it
+    if (cameras.length > 1) {
+        startCamera(document.getElementById('camera2'), cameras[1].deviceId, cameras[1].label || "Unknown Camera");
+    } else {
+        console.warn("Only one camera detected, skipping second camera.");
+    }
 }
+
+
 
 async function captureFrame(videoElement, canvasElement) {
     const ctx = canvasElement.getContext('2d');
@@ -67,16 +68,28 @@ function startCapturing() {
     const canvas2 = document.getElementById('canvas2');
 
     setInterval(() => {
-        sendToServer(cam1, canvas1, "plate1", "/cc106/php/process.php");  // Correct plateId passed
-        sendToServer(cam2, canvas2, "plate2", "/cc106/php/process2.php"); // Correct plateId passed
+        sendToServer(cam1, canvas1, "plate1", "/CC106/php/process.php");  // Correct plateId passed
+        sendToServer(cam2, canvas2, "plate2", "/CC106/php/process2.php"); // Correct plateId passed
     }, 3000);
 }
 
 
-// // Initialize cameras when page loads
-// document.addEventListener('DOMContentLoaded', () => {
-//     initializeCameras().then(() => startCapturing());
-// });
+// Initialize cameras when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCameras().then(() => startCapturing());
+});
+
+// Display real-time date and time
+function updateDateTime() {
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const formattedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    document.querySelector('.date-time').innerHTML = `${formattedDate} &nbsp; ${formattedTime}`;
+}
+
+setInterval(updateDateTime, 1000);
+window.onload = updateDateTime;
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     // Initialize cameras or any other logic

@@ -11,7 +11,7 @@
 <img src="/cc106/images/svg.png" alt="" style="width: 100%; height: 150px; max-width: 100vw; display: block; position: relative;">
 <div class="content">
             <div class="left-content">
-            <img src="/cc106/images/img.png" alt="Registration Image" class="animated-logo" style="margin: 65px 0px 0px 0px;">
+            <img src="/cc106/images/LOGO.png" alt="Registration Image" class="animated-logo" style="margin: 65px 0px 0px 0px; width: 400px; height: 400px;">
             </div>
             <div class="right-content">
             <h1>Start your security with <span class="element"></span>!</h1>

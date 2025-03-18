@@ -22,11 +22,11 @@
 
             <section class="video-section">
 
-                    <video id="camera1" class="video-js vjs-default-skin" controls autoplay></video>
-                    <canvas id="canvas1" style="display:none;"></canvas>
-                    <video id="camera2" class="video-js vjs-default-skin" controls autoplay></video>
-                    <canvas id="canvas2" style="display:none;"></canvas>
-            </section>
+<video id="camera1" class="video-js vjs-default-skin" controls autoplay></video>
+<canvas id="canvas1" style="display:none;"></canvas>
+<video id="camera2" class="video-js vjs-default-skin" controls autoplay></video>
+<canvas id="canvas2" style="display:none;"></canvas>
+    </section>
             
             <section class="plate-container">
                 <div class="plate-block">
@@ -247,6 +247,7 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video.min.js"></script> 
     <script type="module" src="/CC106/js/dashboard.js"></script>

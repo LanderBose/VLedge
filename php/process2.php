@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Decode Base64 Image and Save to Server
     $imageData = str_replace('data:image/jpeg;base64,', '', $data['image']);
     $imageData = base64_decode($imageData);
-    $imagePath = "C:/xampp/htdocs/cc106/captures/capture2.jpg";
+    $imagePath = "C:/xampp/htdocs/CC106/capture2.jpg";
     file_put_contents($imagePath, $imageData);
 
     // Run OpenALPR

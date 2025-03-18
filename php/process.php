@@ -1,4 +1,3 @@
-
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
@@ -11,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageData = $data['image'];
     $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
     $imageData = base64_decode($imageData);
-    $imagePath = "C:/xampp/htdocs/cc106/captures/capture.jpg";
+    $imagePath = "C:/xampp/htdocs/CC106/capture.jpg";
     file_put_contents($imagePath, $imageData);
 
     // Run OpenALPR
