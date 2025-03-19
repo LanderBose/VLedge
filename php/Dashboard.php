@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <h5 class="dashboard">Dashboard</h5>
-    <link rel="stylesheet" href="/CC106/css/dashboard.css">
+    <link rel="stylesheet" href="/v-chain/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/video.js/dist/video.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js/dist/video-js.min.css">
-    <link rel="stylesheet" href="/CC106/css/sidebar.css">
-    <link rel="stylesheet" href="/CC106/css/modal.css">
+    <link rel="stylesheet" href="/v-chain/css/sidebar.css">
+    <link rel="stylesheet" href="/v-chain/css/modal.css">
 </head>
 <body>
 <?php include 'sidebar.php'; ?>  <!-- Include the sidebar -->
@@ -250,8 +250,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video.min.js"></script> 
-    <script type="module" src="/CC106/js/dashboard.js"></script>
+    <script type="module" src="/v-chain/js/dashboard.js"></script>
     
 </body>
 </html>
-
