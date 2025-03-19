@@ -131,3 +131,46 @@ function updateDateTime() {
 
 setInterval(updateDateTime, 1000);
 window.onload = updateDateTime;
+
+
+
+function fetchVehicleLogs() {
+    fetch('/V-Chain/controller/get_vehicle_logs.php') // Ensure correct path
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('vehicleLogsTable');
+
+            // Get all existing log IDs in the table to prevent duplicates
+            const existingLogIds = new Set();
+            tableBody.querySelectorAll('tr').forEach(row => {
+                existingLogIds.add(row.getAttribute('data-log-id'));
+            });
+
+            data.forEach(log => {
+                if (!existingLogIds.has(log.log_id)) {
+                    const row = document.createElement('tr');
+                    row.setAttribute('data-log-id', log.log_id); // Unique identifier for each log entry
+
+                    row.innerHTML = `
+                        <td>${log.log_id.substring(0, 7)}...</td>
+                        <td>${log.plate_number}</td>
+                        <td>${log.full_name}</td>
+                        <td>${log.registration_type}</td>
+                        <td>${log.date}</td>
+                        <td>${log.timestamp}</td>
+                        <td>${log.access_point || 'N/A'}</td>
+                    `;
+
+                    // Append the new row at the **top** so latest logs appear first
+                    tableBody.prepend(row);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching vehicle logs:', error));
+}
+
+// Fetch logs every 5 seconds
+setInterval(fetchVehicleLogs, 5000);
+
+// Fetch logs immediately when the page loads
+fetchVehicleLogs();
