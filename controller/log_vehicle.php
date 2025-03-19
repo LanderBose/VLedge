@@ -5,18 +5,22 @@ header('Content-Type: application/json'); // Ensure JSON output
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
-    $response = []; // Array to store responses
+    $response = [];
 
     if (!isset($data['plate_number'])) {
         echo json_encode(["error" => "No plate number provided"]);
         exit;
     }
 
-    $plateNumber = $data['plate_number'];
-    $currentTime = date('Y-m-d H:i:s');
+    $plateNumber = str_replace(' ', '', $data['plate_number']); // Remove spaces
+    $currentDate = date('Y-m-d');
+    $currentTime = date('H:i:s');
+
+    // Generate a random log_id
+    $logId = uniqid();
 
     // 1. Check if plate exists in vehicle_registration table
-    $stmt = $conn->prepare("SELECT plate_number, full_name, vehicle_type FROM vehicle_registration WHERE plate_number = ?");
+    $stmt = $conn->prepare("SELECT full_name, registration_type FROM vehicle_registration WHERE plate_number = ?");
     $stmt->bind_param("s", $plateNumber);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -28,64 +32,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $vehicle = $result->fetch_assoc();
     $ownerName = $vehicle['full_name'];
-    $vehicleType = $vehicle['vehicle_type'];
-
+    $registrationType = $vehicle['registration_type'];
     $stmt->close();
 
-    // 2. Check if the vehicle is already logged in (without an exit time)
-    $stmt = $conn->prepare("SELECT log_id FROM vehicle_logs WHERE plate_number = ? AND exit_time IS NULL LIMIT 1");
-    $stmt->bind_param("s", $plateNumber);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Access point is null for now
+    $accessPoint = null;
 
-    if ($result->num_rows > 0) {
-        // Vehicle is logged in – update the exit time
-        $log = $result->fetch_assoc();
-        $logId = $log['log_id'];
+    // 2. Insert into vehicle_logs table
+    $stmt = $conn->prepare("INSERT INTO vehicle_logs (log_id, plate_number, full_name, registration_type, date, timestamp, access_point) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $logId, $plateNumber, $ownerName, $registrationType, $currentDate, $currentTime, $accessPoint);
 
-        $stmt->close();
+    if ($stmt->execute()) {
+        $response["message"] = "Log saved successfully.";
 
-        $updateStmt = $conn->prepare("UPDATE vehicle_logs SET exit_time = ? WHERE log_id = ?");
-        $updateStmt->bind_param("si", $currentTime, $logId);
+        // Log to Blockchain
+        $command = "node C:\\xampp\\htdocs\\V-Chain\\js\\logToBlockchain.js \"$logId\" \"$plateNumber\" \"$ownerName\" \"$registrationType\" \"$currentDate\" \"$currentTime\"";
+        exec($command, $output, $returnCode);
 
-        if ($updateStmt->execute()) {
-            $response["message"] = "Exit log updated successfully.";
-
-            // Log exit to Blockchain
-            $command = "node C:\\xampp\\htdocs\\V-Chain\\js\\logToBlockchain.js exit \"$plateNumber\"";
-            exec($command, $output, $returnCode);
-
-            $response["blockchain"] = ($returnCode === 0) ? "Exit logged to blockchain successfully." : "Failed to log exit to blockchain.";
-        } else {
-            $response["error"] = "Failed to update exit log.";
-        }
-
-        $updateStmt->close();
+        $response["blockchain"] = ($returnCode === 0) ? "Log recorded on blockchain successfully." : "Failed to log on blockchain.";
     } else {
-        // Vehicle is NOT logged in – log a new entry
-        $stmt->close();
-
-        $insertStmt = $conn->prepare("INSERT INTO vehicle_logs (plate_number, entry_time, owner_name, vehicle_type) VALUES (?, ?, ?, ?)");
-        $insertStmt->bind_param("ssss", $plateNumber, $currentTime, $ownerName, $vehicleType);
-
-        if ($insertStmt->execute()) {
-            $response["message"] = "Entry log saved successfully.";
-
-            // Log entry to Blockchain
-            $command = "node C:\\xampp\\htdocs\\V-Chain\\js\\logToBlockchain.js entry \"$plateNumber\" \"$ownerName\" \"$vehicleType\"";
-            exec($command, $output, $returnCode);
-
-            $response["blockchain"] = ($returnCode === 0) ? "Entry logged to blockchain successfully." : "Failed to log entry to blockchain.";
-        } else {
-            $response["error"] = "Failed to save entry log.";
-        }
-
-        $insertStmt->close();
+        $response["error"] = "Failed to save log.";
     }
 
+    $stmt->close();
     $conn->close();
 
-    // ✅ Send a SINGLE JSON response
     echo json_encode($response);
 }
 ?>
