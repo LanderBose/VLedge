@@ -237,15 +237,16 @@
         </div>
 </div>
 
-<!-- Success Modal -->
-<div id="successModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-icon success-icon">&#10004;</div> <!-- Green check icon -->
-        <h2 class="modal-title success-title">Success!</h2>
-        <p>The plate number <span id="plateNumber" class="plate-number">ABC 1234</span> has been successfully registered.</p>
-        <button class="modal-button ok-button">OK</button>
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon success-icon">&#10004;</div> <!-- Green check icon -->
+            <h2 class="modal-title success-title" id="detectedCamera"></h2> 
+            <p>Plate Number: <span id="plateNumber" class="plate-number"></span></p>
+            <button class="modal-button ok-button" id="confirmButton">Confirm</button>
+        </div>
     </div>
-</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
 
