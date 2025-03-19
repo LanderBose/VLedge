@@ -15,10 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact_number = $_POST['contact_number'];
     $house_address = $_POST['house_address'];
     $registration_type = $_POST['registration_type'];
-    $vehicle_plate_number = $_POST['vehicle_plate_number'];
+    $plate_number = $_POST['plate_number']; // Changed variable name
     $vehicle_type = $_POST['vehicle_type'];
     $plate_type = $_POST['plate_type'];
     $vehicle_color = $_POST['vehicle_color'];
+
+    // Remove spaces from the plate number
+    $plate_number = str_replace(' ', '', $plate_number);
 
     $vehicle_images = "";
 
@@ -44,16 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $vehicle_images = implode(",", $file_paths);
     }
     
-
     $sql = "INSERT INTO vehicle_registration 
-            (id, full_name, contact_number, house_address, registration_type, vehicle_plate_number, 
+            (id, full_name, contact_number, house_address, registration_type, plate_number, 
              vehicle_type, plate_type, vehicle_color, vehicle_images) 
             VALUES 
             (UUID(), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssssss", $full_name, $contact_number, $house_address, 
-                                    $registration_type, $vehicle_plate_number, 
+                                    $registration_type, $plate_number, 
                                     $vehicle_type, $plate_type, $vehicle_color, 
                                     $vehicle_images);
 

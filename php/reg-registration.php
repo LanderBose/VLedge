@@ -473,7 +473,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <input type="text" name="vehicle_plate_number" placeholder="VEHICLE PLATE NUMBER" required maxlength="9" oninput="formatPlateNumber(this)">
+                        <input type="text" name="plate_number" placeholder="VEHICLE PLATE NUMBER" required maxlength="9" oninput="formatPlateNumber(this)">
                     </div>
                     
                     <div class="form-group">
