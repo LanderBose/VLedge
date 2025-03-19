@@ -12,3 +12,4 @@ if ($returnCode === 0) {
     echo "Error adding log to blockchain.";
 }
 ?>
+    

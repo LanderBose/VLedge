@@ -1,5 +1,3 @@
-let capturing = true; // Global flag to control capturing
-
 async function getCameras() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     return devices.filter(device => device.kind === 'videoinput');
@@ -39,25 +37,7 @@ async function captureFrame(videoElement, canvasElement) {
     return canvasElement.toDataURL('image/jpeg'); 
 }
 
-function showPlatePopup(cameraLabel, plate) {
-    document.getElementById("detectedCamera").innerText = `${cameraLabel} detected a plate`;
-    document.getElementById("plateNumber").innerText = plate;
-    showModal('successModal');
-}
-
-// Stop capturing when modal is open
-function stopCapturing() {
-    capturing = false;
-}
-
-// Resume capturing when user clicks confirm
-function resumeCapturing() {
-    capturing = true;
-}
-
-async function sendToServer(videoElement, canvasElement, plateId, endpoint, cameraLabel) {
-    if (!capturing) return; // Stop processing if a modal is open
-
+async function sendToServer(videoElement, canvasElement, plateId, endpoint) {
     const imageData = await captureFrame(videoElement, canvasElement);
     fetch(endpoint, {
         method: 'POST',
@@ -69,47 +49,43 @@ async function sendToServer(videoElement, canvasElement, plateId, endpoint, came
         const plateElement = document.getElementById(plateId);
         if (plateElement) {
             plateElement.innerText = data.plate ? `${data.plate}` : "No plate detected.";
-        }
 
-        if (data.plate && data.plate !== "Not Detected") {
-            stopCapturing();
-            showPlatePopup(cameraLabel, data.plate);
+            // If a plate is detected, log to MySQL and Blockchain
+            if (data.plate && data.plate !== "Not Detected") {
+                logVehicle(data.plate);
+            }
         }
     })
     .catch(error => console.error(`Error sending to ${endpoint}:`, error));
 }
 
+async function logVehicle(plate) {
+    fetch('/v-chain/controller/log_vehicle.php', {
+        method: 'POST',
+        body: JSON.stringify({ plate_number: plate }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => console.log("Log status: ", data))
+    .catch(error => console.error("Error logging vehicle:", error));
+}
+
 function startCapturing() {
+    const cam1 = document.getElementById('camera1');
+    const cam2 = document.getElementById('camera2');
+    const canvas1 = document.getElementById('canvas1');
+    const canvas2 = document.getElementById('canvas2');
+
     setInterval(() => {
-        if (capturing) { // Capture only if allowed
-            sendToServer(document.getElementById('camera1'), document.getElementById('canvas1'), "plate1", "/v-chain/controller/process.php", "Camera 1");
-            sendToServer(document.getElementById('camera2'), document.getElementById('canvas2'), "plate2", "/v-chain/controller/process2.php", "Camera 2");
-        }
+        sendToServer(cam1, canvas1, "plate1", "/v-chain/controller/process.php");
+        sendToServer(cam2, canvas2, "plate2", "/v-chain/controller/process2.php");
     }, 3000);
 }
 
-// Modal Handling Functions
-function showModal(modalId) {
-    stopCapturing(); // Stop capturing when modal is shown
-    document.getElementById(modalId).style.display = 'flex';
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-    resumeCapturing(); // Resume capturing after modal is closed
-}
-
-// Initialize cameras and start capturing when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     initializeCameras().then(() => startCapturing());
-
-    // Confirm button for success modal
-    document.getElementById('confirmButton').addEventListener('click', () => {
-        closeModal('successModal');
-    });
 });
 
-// Display real-time date and time
 function updateDateTime() {
     const now = new Date();
     const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -118,4 +94,83 @@ function updateDateTime() {
 }
 
 setInterval(updateDateTime, 1000);
-document.addEventListener('DOMContentLoaded', updateDateTime);
+window.onload = updateDateTime;
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Initialize cameras or any other logic
+
+//     // Attach event listener for Retry button
+//     const retryButton = document.getElementById('retryButton');
+//     retryButton.addEventListener('click', () => {
+//         closeAndShowNext('errorModal', 'successModal');
+//     });
+
+//     // Attach event listener for OK button in success modal
+//     const okButton = document.getElementById('ok-button');
+//     okButton.addEventListener('click', () => {
+//         closeModal('successModal');
+//     });
+// });
+
+// function closeModal(modalId) {
+//     document.getElementById(modalId).style.display = 'none';
+// }
+
+// function showModal(modalId) {
+//     document.getElementById(modalId).style.display = 'flex';
+// }
+
+// function closeAndShowNext(currentModalId, nextModalId) {
+//     closeModal(currentModalId);
+//     setTimeout(() => {
+//         document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
+//         showModal(nextModalId);
+//     }, 500); // Delay before showing next modal
+// }
+
+// // Show the error modal when the page loads
+// window.onload = function() {
+//     showModal('errorModal');
+// };
+
+
+
+
+
+//     document.addEventListener('DOMContentLoaded', () => {
+    
+//         const retryButton = document.getElementById('retryButton');
+//         retryButton.addEventListener('click', () => {
+//             closeAndShowNext('errorModal', 'successModal');
+//         });
+    
+//         // Attach event listener for OK button in success modal
+//         const okButton = document.getElementById('ok-button');
+//         okButton.addEventListener('click', () => {
+//             closeModal('successModal');
+//         });
+//     });
+    
+//     function closeModal(modalId) {
+//         document.getElementById(modalId).style.display = 'none';
+//     }
+    
+//     function showModal(modalId) {
+//         document.getElementById(modalId).style.display = 'flex';
+//     }
+    
+//     function closeAndShowNext(currentModalId, nextModalId) {
+//         closeModal(currentModalId);
+//         setTimeout(() => {
+//             document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
+//             showModal(nextModalId);
+//         }, 500); // Delay before showing next modal
+//     }
+    
+//     // Show the error modal when the page loads
+//     window.onload = function() {
+//         showModal('errorModal');
+//     };
+    
