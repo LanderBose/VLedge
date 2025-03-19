@@ -68,8 +68,8 @@ function startCapturing() {
     const canvas2 = document.getElementById('canvas2');
 
     setInterval(() => {
-        sendToServer(cam1, canvas1, "plate1", "/CC106/php/process.php");  // Correct plateId passed
-        sendToServer(cam2, canvas2, "plate2", "/CC106/php/process2.php"); // Correct plateId passed
+        sendToServer(cam1, canvas1, "plate1", "/v-chain/php/process.php");  // Correct plateId passed
+        sendToServer(cam2, canvas2, "plate2", "/v-chain/php/process2.php"); // Correct plateId passed
     }, 3000);
 }
 
