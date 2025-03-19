@@ -6024,12 +6024,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xb9954e7eE9bA708D7619030d98e182e23f2613cf",
-      "transactionHash": "0xa2793cf167dc1dd54aa56cc406bd37c523fccc5f61d1cac82c6d64abdf611d80"
+      "address": "0x754809E64191160b0fF83E0C1A0C074F02E5C7B1",
+      "transactionHash": "0xb4ca6ee69fbfe8ac944207660583468bf40483782f86acf3b580d1c32d2b31ff"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-03-19T15:18:14.781Z",
+  "updatedAt": "2025-03-19T16:50:35.472Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
