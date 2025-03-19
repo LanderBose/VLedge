@@ -1,8 +1,11 @@
 <?php
 include 'dbconnect.php';
 
+header('Content-Type: application/json'); // Ensure JSON output
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
+    $response = []; // Array to store responses
 
     if (!isset($data['plate_number'])) {
         echo json_encode(["error" => "No plate number provided"]);
@@ -46,19 +49,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updateStmt->bind_param("si", $currentTime, $logId);
 
         if ($updateStmt->execute()) {
-            echo json_encode(["message" => "Exit log updated successfully."]);
+            $response["message"] = "Exit log updated successfully.";
 
             // Log exit to Blockchain
             $command = "node C:\\xampp\\htdocs\\V-Chain\\js\\logToBlockchain.js exit \"$plateNumber\"";
             exec($command, $output, $returnCode);
 
-            if ($returnCode === 0) {
-                echo json_encode(["blockchain" => "Exit logged to blockchain successfully."]);
-            } else {
-                echo json_encode(["error" => "Failed to log exit to blockchain."]);
-            }
+            $response["blockchain"] = ($returnCode === 0) ? "Exit logged to blockchain successfully." : "Failed to log exit to blockchain.";
         } else {
-            echo json_encode(["error" => "Failed to update exit log."]);
+            $response["error"] = "Failed to update exit log.";
         }
 
         $updateStmt->close();
@@ -70,24 +69,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insertStmt->bind_param("ssss", $plateNumber, $currentTime, $ownerName, $vehicleType);
 
         if ($insertStmt->execute()) {
-            echo json_encode(["message" => "Entry log saved successfully."]);
+            $response["message"] = "Entry log saved successfully.";
 
             // Log entry to Blockchain
             $command = "node C:\\xampp\\htdocs\\V-Chain\\js\\logToBlockchain.js entry \"$plateNumber\" \"$ownerName\" \"$vehicleType\"";
             exec($command, $output, $returnCode);
 
-            if ($returnCode === 0) {
-                echo json_encode(["blockchain" => "Entry logged to blockchain successfully."]);
-            } else {
-                echo json_encode(["error" => "Failed to log entry to blockchain."]);
-            }
+            $response["blockchain"] = ($returnCode === 0) ? "Entry logged to blockchain successfully." : "Failed to log entry to blockchain.";
         } else {
-            echo json_encode(["error" => "Failed to save entry log."]);
+            $response["error"] = "Failed to save entry log.";
         }
 
         $insertStmt->close();
     }
 
     $conn->close();
+
+    // ✅ Send a SINGLE JSON response
+    echo json_encode($response);
 }
 ?>
