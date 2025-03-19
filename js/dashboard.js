@@ -91,79 +91,79 @@ setInterval(updateDateTime, 1000);
 window.onload = updateDateTime;
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Initialize cameras or any other logic
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize cameras or any other logic
 
-//     // Attach event listener for Retry button
-//     const retryButton = document.getElementById('retryButton');
-//     retryButton.addEventListener('click', () => {
-//         closeAndShowNext('errorModal', 'successModal');
-//     });
+    // Attach event listener for Retry button
+    const retryButton = document.getElementById('retryButton');
+    retryButton.addEventListener('click', () => {
+        closeAndShowNext('errorModal', 'successModal');
+    });
 
-//     // Attach event listener for OK button in success modal
-//     const okButton = document.getElementById('ok-button');
-//     okButton.addEventListener('click', () => {
-//         closeModal('successModal');
-//     });
-// });
+    // Attach event listener for OK button in success modal
+    const okButton = document.getElementById('ok-button');
+    okButton.addEventListener('click', () => {
+        closeModal('successModal');
+    });
+});
 
-// function closeModal(modalId) {
-//     document.getElementById(modalId).style.display = 'none';
-// }
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
 
-// function showModal(modalId) {
-//     document.getElementById(modalId).style.display = 'flex';
-// }
+function showModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+}
 
-// function closeAndShowNext(currentModalId, nextModalId) {
-//     closeModal(currentModalId);
-//     setTimeout(() => {
-//         document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
-//         showModal(nextModalId);
-//     }, 500); // Delay before showing next modal
-// }
+function closeAndShowNext(currentModalId, nextModalId) {
+    closeModal(currentModalId);
+    setTimeout(() => {
+        document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
+        showModal(nextModalId);
+    }, 500); // Delay before showing next modal
+}
 
-// // Show the error modal when the page loads
-// window.onload = function() {
-//     showModal('errorModal');
-// };
-
-
+// Show the error modal when the page loads
+window.onload = function() {
+    showModal('errorModal');
+};
 
 
 
-    // document.addEventListener('DOMContentLoaded', () => {
+
+
+    document.addEventListener('DOMContentLoaded', () => {
     
-    //     const retryButton = document.getElementById('retryButton');
-    //     retryButton.addEventListener('click', () => {
-    //         closeAndShowNext('errorModal', 'successModal');
-    //     });
+        const retryButton = document.getElementById('retryButton');
+        retryButton.addEventListener('click', () => {
+            closeAndShowNext('errorModal', 'successModal');
+        });
     
-    //     // Attach event listener for OK button in success modal
-    //     const okButton = document.getElementById('ok-button');
-    //     okButton.addEventListener('click', () => {
-    //         closeModal('successModal');
-    //     });
-    // });
+        // Attach event listener for OK button in success modal
+        const okButton = document.getElementById('ok-button');
+        okButton.addEventListener('click', () => {
+            closeModal('successModal');
+        });
+    });
     
-    // function closeModal(modalId) {
-    //     document.getElementById(modalId).style.display = 'none';
-    // }
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
     
-    // function showModal(modalId) {
-    //     document.getElementById(modalId).style.display = 'flex';
-    // }
+    function showModal(modalId) {
+        document.getElementById(modalId).style.display = 'flex';
+    }
     
-    // function closeAndShowNext(currentModalId, nextModalId) {
-    //     closeModal(currentModalId);
-    //     setTimeout(() => {
-    //         document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
-    //         showModal(nextModalId);
-    //     }, 500); // Delay before showing next modal
-    // }
+    function closeAndShowNext(currentModalId, nextModalId) {
+        closeModal(currentModalId);
+        setTimeout(() => {
+            document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
+            showModal(nextModalId);
+        }, 500); // Delay before showing next modal
+    }
     
-    // // Show the error modal when the page loads
-    // window.onload = function() {
-    //     showModal('errorModal');
-    // };
+    // Show the error modal when the page loads
+    window.onload = function() {
+        showModal('errorModal');
+    };
     
