@@ -446,7 +446,7 @@
         
         <div class="container">
             <!-- Logo is placed above the form -->
-            <img src="/cc106/images/LOGO.png" alt="V-Chain Logo" class="logo-above-form">
+            <img src="/v-chain/images/LOGO.png" alt="V-Chain Logo" class="logo-above-form">
             
             <div class="form-container">
                 <h1>V-Chain<br>REGISTRATION</h1>
@@ -528,7 +528,7 @@
                     </div>
 
                     <div class="btn-container">
-    <button type="submit" class="Submit-btn" onclick="window.location.href='/cc106/php/reg-typrompt.php'">Submit</button>
+    <button type="submit" class="Submit-btn" onclick="window.location.href='/v-chain/php/reg-typrompt.php'">Submit</button>
 </div>
                 </form>
             </div>
