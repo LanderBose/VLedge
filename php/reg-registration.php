@@ -535,23 +535,23 @@
         </div>
     </div>
     <script>
-        function formatPlateNumber(input) {
-            let value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-            let firstPart = value.slice(0, 4);
-            let secondPart = value.slice(4, 8);
-
-            if (/^\d{4}$/.test(firstPart)) {
-                secondPart = secondPart.replace(/[^A-Z]/g, '');
-                input.value = firstPart + (secondPart ? ' ' : '') + secondPart;
-            } else if (/^[A-Z]{4}$/.test(firstPart)) {
-                secondPart = secondPart.replace(/[^0-9]/g, '');
-                input.value = firstPart + (secondPart ? ' ' : '') + secondPart;
-            } else {
-                input.value = firstPart.replace(/[^A-Z0-9]/g, '');
-            }
-
-            input.value = input.value.slice(0, 9);
-        }
+function formatPlateNumber(input) {
+    let value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    
+    if (/^[A-Z]+/.test(value)) {
+        // Starts with letters: Limit to 3 letters followed by 4 numbers (AAA 1234)
+        let letters = value.match(/^[A-Z]{0,3}/)[0];
+        let numbers = value.substring(letters.length).replace(/[^0-9]/g, '').slice(0, 4);
+        input.value = letters + (numbers ? ' ' : '') + numbers;
+    } else if (/^\d+/.test(value)) {
+        // Starts with numbers: Limit to 4 numbers followed by 3 letters (1234 ABC)
+        let numbers = value.match(/^\d{0,4}/)[0];
+        let letters = value.substring(numbers.length).replace(/[^A-Z]/g, '').slice(0, 3);
+        input.value = numbers + (letters ? ' ' : '') + letters;
+    } else {
+        input.value = value;
+    }
+}
 
         let selectedFiles = new DataTransfer(); // Create a DataTransfer object
 
