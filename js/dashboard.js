@@ -7,12 +7,10 @@ async function startCamera(videoElement, deviceId) {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: deviceId } } });
         videoElement.srcObject = stream;
-
     } catch (error) {
         console.error(`Error accessing camera: ${error}`);
     }
 }
-
 
 async function initializeCameras() {
     const cameras = await getCameras();
@@ -22,18 +20,14 @@ async function initializeCameras() {
         return;
     }
 
-    // Always start the first detected camera
-    startCamera(document.getElementById('camera1'), cameras[0].deviceId, cameras[0].label || "Unknown Camera");
+    startCamera(document.getElementById('camera1'), cameras[0].deviceId);
 
-    // If a second camera is available, start it
     if (cameras.length > 1) {
-        startCamera(document.getElementById('camera2'), cameras[1].deviceId, cameras[1].label || "Unknown Camera");
+        startCamera(document.getElementById('camera2'), cameras[1].deviceId);
     } else {
         console.warn("Only one camera detected, skipping second camera.");
     }
 }
-
-
 
 async function captureFrame(videoElement, canvasElement) {
     const ctx = canvasElement.getContext('2d');
@@ -52,15 +46,30 @@ async function sendToServer(videoElement, canvasElement, plateId, endpoint) {
     })
     .then(response => response.json())
     .then(data => {
-        const plateElement = document.getElementById(plateId); // Correctly reference the ID
+        const plateElement = document.getElementById(plateId);
         if (plateElement) {
             plateElement.innerText = data.plate ? `${data.plate}` : "No plate detected.";
+
+            // If a plate is detected, log to MySQL and Blockchain
+            if (data.plate && data.plate !== "Not Detected") {
+                logVehicle(data.plate);
+            }
         }
     })
     .catch(error => console.error(`Error sending to ${endpoint}:`, error));
 }
 
-// Capture frames and send to the server every 3 seconds
+async function logVehicle(plate) {
+    fetch('/v-chain/controller/log_vehicle.php', {
+        method: 'POST',
+        body: JSON.stringify({ plate_number: plate }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => console.log("Log status: ", data))
+    .catch(error => console.error("Error logging vehicle:", error));
+}
+
 function startCapturing() {
     const cam1 = document.getElementById('camera1');
     const cam2 = document.getElementById('camera2');
@@ -68,18 +77,15 @@ function startCapturing() {
     const canvas2 = document.getElementById('canvas2');
 
     setInterval(() => {
-        sendToServer(cam1, canvas1, "plate1", "/v-chain/php/process.php");  // Correct plateId passed
-        sendToServer(cam2, canvas2, "plate2", "/v-chain/php/process2.php"); // Correct plateId passed
+        sendToServer(cam1, canvas1, "plate1", "/v-chain/controller/process.php");
+        sendToServer(cam2, canvas2, "plate2", "/v-chain/controller/process2.php");
     }, 3000);
 }
 
-
-// Initialize cameras when page loads
 document.addEventListener('DOMContentLoaded', () => {
     initializeCameras().then(() => startCapturing());
 });
 
-// Display real-time date and time
 function updateDateTime() {
     const now = new Date();
     const formattedDate = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -91,79 +97,80 @@ setInterval(updateDateTime, 1000);
 window.onload = updateDateTime;
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize cameras or any other logic
 
-    // Attach event listener for Retry button
-    const retryButton = document.getElementById('retryButton');
-    retryButton.addEventListener('click', () => {
-        closeAndShowNext('errorModal', 'successModal');
-    });
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Initialize cameras or any other logic
 
-    // Attach event listener for OK button in success modal
-    const okButton = document.getElementById('ok-button');
-    okButton.addEventListener('click', () => {
-        closeModal('successModal');
-    });
-});
+//     // Attach event listener for Retry button
+//     const retryButton = document.getElementById('retryButton');
+//     retryButton.addEventListener('click', () => {
+//         closeAndShowNext('errorModal', 'successModal');
+//     });
 
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-}
+//     // Attach event listener for OK button in success modal
+//     const okButton = document.getElementById('ok-button');
+//     okButton.addEventListener('click', () => {
+//         closeModal('successModal');
+//     });
+// });
 
-function showModal(modalId) {
-    document.getElementById(modalId).style.display = 'flex';
-}
+// function closeModal(modalId) {
+//     document.getElementById(modalId).style.display = 'none';
+// }
 
-function closeAndShowNext(currentModalId, nextModalId) {
-    closeModal(currentModalId);
-    setTimeout(() => {
-        document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
-        showModal(nextModalId);
-    }, 500); // Delay before showing next modal
-}
+// function showModal(modalId) {
+//     document.getElementById(modalId).style.display = 'flex';
+// }
 
-// Show the error modal when the page loads
-window.onload = function() {
-    showModal('errorModal');
-};
+// function closeAndShowNext(currentModalId, nextModalId) {
+//     closeModal(currentModalId);
+//     setTimeout(() => {
+//         document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
+//         showModal(nextModalId);
+//     }, 500); // Delay before showing next modal
+// }
 
-
-
+// // Show the error modal when the page loads
+// window.onload = function() {
+//     showModal('errorModal');
+// };
 
 
-    document.addEventListener('DOMContentLoaded', () => {
+
+
+
+//     document.addEventListener('DOMContentLoaded', () => {
     
-        const retryButton = document.getElementById('retryButton');
-        retryButton.addEventListener('click', () => {
-            closeAndShowNext('errorModal', 'successModal');
-        });
+//         const retryButton = document.getElementById('retryButton');
+//         retryButton.addEventListener('click', () => {
+//             closeAndShowNext('errorModal', 'successModal');
+//         });
     
-        // Attach event listener for OK button in success modal
-        const okButton = document.getElementById('ok-button');
-        okButton.addEventListener('click', () => {
-            closeModal('successModal');
-        });
-    });
+//         // Attach event listener for OK button in success modal
+//         const okButton = document.getElementById('ok-button');
+//         okButton.addEventListener('click', () => {
+//             closeModal('successModal');
+//         });
+//     });
     
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-    }
+//     function closeModal(modalId) {
+//         document.getElementById(modalId).style.display = 'none';
+//     }
     
-    function showModal(modalId) {
-        document.getElementById(modalId).style.display = 'flex';
-    }
+//     function showModal(modalId) {
+//         document.getElementById(modalId).style.display = 'flex';
+//     }
     
-    function closeAndShowNext(currentModalId, nextModalId) {
-        closeModal(currentModalId);
-        setTimeout(() => {
-            document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
-            showModal(nextModalId);
-        }, 500); // Delay before showing next modal
-    }
+//     function closeAndShowNext(currentModalId, nextModalId) {
+//         closeModal(currentModalId);
+//         setTimeout(() => {
+//             document.getElementById("plateNumber").innerText = "ABC 1234"; // Example plate number
+//             showModal(nextModalId);
+//         }, 500); // Delay before showing next modal
+//     }
     
-    // Show the error modal when the page loads
-    window.onload = function() {
-        showModal('errorModal');
-    };
+//     // Show the error modal when the page loads
+//     window.onload = function() {
+//         showModal('errorModal');
+//     };
     

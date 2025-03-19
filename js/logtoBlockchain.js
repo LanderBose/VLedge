@@ -1,22 +1,54 @@
-const Web3 = require('web3');
-const contract = require('./build/contracts/VehicleLog.json');
+const {Web3} = require('web3');
+const fs = require('fs');
+const path = require('path');
 
-const web3 = new Web3('http://127.0.0.1:7545'); // Ganache URL
-const contractAddress = '0xbc419269834d3773F34a42Ba83F7974B458B94a9';
-const vehicleLog = new web3.eth.Contract(contract.abi, contractAddress);
+// Connect to Ganache
+const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
 
-const args = process.argv.slice(2);
-const [plateNumber, ownerName, vehicleType] = args;
+// Load the contract ABI and address
+const contractPath = path.join(__dirname, '../build/contracts/VehicleLog.json');
+const contractJson = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
 
-const account = '0x2489e2fca65f45499A99561BBEe0735f8A5025b0'; // From Ganache
+const contractAddress = "0xb9954e7eE9bA708D7619030d98e182e23f2613cf"; // Replace this
+const vehicleLog = new web3.eth.Contract(contractJson.abi, contractAddress);
 
-async function logEntry() {
+// Helper function to log a vehicle entry
+async function logEntry(plateNumber, ownerName, vehicleType) {
     try {
-        await vehicleLog.methods.logEntry(plateNumber, ownerName, vehicleType).send({ from: account });
-        console.log("Log added to blockchain");
+        const accounts = await web3.eth.getAccounts();
+        const sender = accounts[0];
+
+        const result = await vehicleLog.methods.logEntry(plateNumber, ownerName, vehicleType)
+            .send({ from: sender });
+
+        console.log("✅ Vehicle entry logged:", result.transactionHash);
     } catch (error) {
-        console.error("Error:", error);
+        console.error("❌ Error logging vehicle entry:", error);
     }
 }
 
-logEntry();
+// Helper function to log a vehicle exit
+async function logExit(plateNumber) {
+    try {
+        const accounts = await web3.eth.getAccounts();
+        const sender = accounts[0];
+
+        const result = await vehicleLog.methods.logExit(plateNumber)
+            .send({ from: sender });
+
+        console.log("✅ Vehicle exit logged:", result.transactionHash);
+    } catch (error) {
+        console.error("❌ Error logging vehicle exit:", error);
+    }
+}
+
+// Read input from command line
+const [action, plateNumber, ownerName, vehicleType] = process.argv.slice(2);
+
+if (action === "entry") {
+    logEntry(plateNumber, ownerName, vehicleType);
+} else if (action === "exit") {
+    logExit(plateNumber);
+} else {
+    console.error("❌ Invalid action. Use 'entry' or 'exit'.");
+}
