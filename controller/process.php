@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     preg_match('/-\s+([A-Z0-9]+)\s+confidence:/i', $output, $matches);
     $plate = $matches[1] ?? 'Not Detected';
 
+    if($matches){
+
+    }
+
 
     echo json_encode(["plate" => $plate]);
 }

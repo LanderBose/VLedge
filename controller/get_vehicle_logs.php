@@ -3,10 +3,11 @@ include 'dbconnect.php';
 
 header('Content-Type: application/json');
 
-// Fetch logs from vehicle_logs table
-$sql = "SELECT log_id, plate_number, full_name, registration_type, date, timestamp, access_point 
-        FROM vehicle_logs 
-        ORDER BY timestamp DESC";
+// Fetch logs with registration_type from vehicle_registration table
+$sql = "SELECT vl.plate_number, vl.owner_name, vl.vehicle_type, vl.entry_time, vl.exit_time, vr.registration_type
+        FROM vehicle_logs vl
+        JOIN vehicle_registration vr ON vl.plate_number = vr.plate_number
+        ORDER BY vl.entry_time DESC";
 
 $result = $conn->query($sql);
 
