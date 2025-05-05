@@ -1,217 +1,413 @@
-body {
+/* Dashboard Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+:root {
+    --primary-color: #6e222e;
+    --primary-color-dark: #5c1b24;
+    --secondary-color: #2c2c2c;
+    --bg-color: #1e1e1e;
+    --card-bg: #2a2a2a;
+    --text-color: #ffffff;
+    --text-muted: #b0b0b0;
+    --border-color: #3a3a3a;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+}
+
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    background-color: #EAE7DC;
-    height: 100vh; /* Make the page scrollable 2x */
-}
-.container {
-    display: flex;
-    width: 100%;
-}
-
-.sidebar nav ul {
-    list-style: none;
     padding: 0;
-    text-align: center; /* Center align the list items */
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.sidebar nav ul li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px; /* Apply 30px padding */
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin: 10px 0px 30px;
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
 }
 
-.sidebar nav ul li i {
-    margin-right: 10px; /* Add spacing between icon and text */
-    font-size: 20px; /* Adjust icon size */
-}
-
-.sidebar nav ul li:hover,
-.sidebar nav ul li.active {
-    background: #34495e; /* Active and hover background */
-    border-radius: 5px;
-}
 .content {
-    flex: 1;
-    padding: 5px 20px 0px 80px;
+    margin-left: 80px;
+    padding: 20px;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
 }
+
 .top-bar {
     display: flex;
     justify-content: space-between;
-    background: #ecf0f1;
-    border-radius: 5px;
-    margin-top: 10px;
-    background-color: #EAE7DC;
-    border: 2px solid #EAE7DC; /* Blue border */
-}
-
-.top-bar span {
-    font-weight: bold;
-    color: #355A7B;
-    border-left: 5px solid #355A7B;
-    padding-left: 10px;
-    margin: 0px 5px;
-}
-
-.video-section {
-    display: flex;
-    justify-content: space-between; 
-    margin: 20px 0 10px 0;
-}
-.video-js {
-    width: 49%; 
-    height: 450px; 
-    border-radius: 20px; /* Add rounded corners */
-
-}
-
-.transactions {
-    background: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-table, th, td {
-    border: 1px solid #EAE7DC
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
-}
- 
-.plate-row1, .plate-row2 {
-    display: inline-block;
-    align-items: center; /* Aligns text vertically */
-    gap: 10px; /* Adds spacing between text and plate */
-    padding-left: 10px;
-}
-
-.plate-container {
-    display: flex;
-    justify-content: space-between; /* Ensures even spacing */
-    width: 100%;
-    color: #355A7B;
-
-}
-
-.plate-block {
-    display: flex;
-    align-items: center; /* Align text and plate number */
-    width: 50%; /* Each section takes half of the width */
-    gap: 10px; /* Adds spacing between text and plate number */
-    padding: 0 15px;
-
-}
-
-.text-plate, .text-plate2{
-    font-weight: bold;
-    white-space: nowrap; /* Prevents text from wrapping */
-}
-
-.text-plate2 {
-    padding-left: 15px;
-}
-/* Transactions Section */
-.transactions {
-    height: 500px;
-    background-color: #EAE7DC;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    border: 2px solid #E7DFCF; /* Blue border */
-    overflow-x: auto;
-    color: #355A7B;
-}
-.transactions h2{
-    margin: 5px 0 0 0;
-}
-/* Table Styling */
-.transactions table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Poppins', sans-serif;
-    background-color: #EAE7DC; /* Slightly lighter beige */
-}
-
-/* Table Headers */
-.transactions th {
-    background-color: #EAE7DC;
-    color: #355A7B;
-    font-weight: bold;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #EAE7DC; /* Blue border under headers */
-}
-
-/* Table Rows */
-.transactions td {
-    padding: 12px;
-    border-bottom: 2px solid #D3CCB2; /* Blue border under headers */
-    background-color: #EAE7DC;
-    color: #355A7B;
-}
-
-.transactions td:hover{
-    background-color: #C9C4B8; /* Slightly darker beige */
-    transform: scale(1.01); /* Slight zoom effect */
-    transition: all 0.2s ease-in-out; /* Smooth transition */
-    cursor: pointer;
-}
-
-/* Add Hover Effect */
-.transactions tr:hover {
-    background-color: #D3CCB2; /* Slightly darker beige on hover */
-}
-
-/* Rounded corners for the entire section */
-.transactions {
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.date-time{
-    background-color: #e4e1d7;
-    padding: 5px;
-    border-radius: 6px;
-    color: #355A7B;
-}
-
-.table-container {
-    max-height: 500px; /* Adjust as needed */
-    overflow-y: auto; /* Enables vertical scrolling */
-    overflow-x: auto; /* Enables horizontal scrolling if needed */
-    border-radius: 10px; /* Optional: Rounded corners */
-    white-space: nowrap;
-}
-
-.transactions thead th {
-    position: sticky;
-    top: 0;
-    background-color: #EAE7DC;
-    z-index: 2;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .dashboard-title {
-    font-weight: bold;
-    color: #355A7B;
-    border-left: 5px solid #355A7B;
-    padding-left: 10px;
-    font-size: x-large;
+    font-size: 35px;
+    font-weight: 200;
+    font-family: "Michroma", sans-serif;
 }
 
+.date-time {
+    font-size: 16px;
+    color: var(--text-muted);
+}
 
+/* Video Section */
+.video-section {
+    display: flex;
+    justify-content: center; /* Center the cameras */
+    gap: 10px; /* Reduce gap between cameras */
+    margin-bottom: 20px;
+    position: relative;
+
+}
+
+.camera-container {
+    width: 48%; /* Slightly narrower to bring cameras closer */
+    position: relative;
+}
+
+.video-js {
+    width: 100%;
+    height: 500px; /* Slightly taller */
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-js:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fullscreen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.fullscreen-video .video-js {
+    width: 90%;
+    height: 90%;
+    max-width: 1200px;
+}
+
+.close-fullscreen {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* License Plate Info */
+.plate-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Match the camera gap */
+    margin-bottom: 25px;
+}
+
+.plate-block {
+    width: 48%; /* Match camera width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Plate Number Box */
+.plate-number-box {
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.text-plate, .text-plate2 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#plate1, #plate2 {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Info Boxes */
+.plate-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.info-item {
+    background-color: var(--primary-color);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+}
+
+.info-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.info-value {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Transaction Section */
+.transactions {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.transactions h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.table-container {
+    width: 100%;
+    max-height: 300px; /* Fixed height for scroll */
+    overflow-y: auto; /* Vertical scroll */
+    overflow-x: auto; /* Horizontal scroll if needed */
+    border-radius: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--card-bg);
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color-dark);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--secondary-color);
+}
+
+th {
+    padding: 12px 15px;
+    text-align: left;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Camera Controls */
+.camera-controls {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+}
+
+.camera-control-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 25px;
+}
+
+.camera-control-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Camera Source Selection */
+.camera-source-control {
+    position: absolute;
+    top: 10px;
+    right: 1px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 12px;
+    border-radius: 0 0 0 20px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.camera-source-label {
+    color: white;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.camera-source-select {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    outline: none;
+}
+
+.camera-source-select:focus {
+    border-color: var(--primary-color);
+}
+
+.camera-source-select option {
+    background-color: #333;
+    color: white;
+}
+
+/* Camera status indicators */
+.camera-status {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.camera-status.active {
+    background-color: var(--success-color);
+}
+
+.camera-status.inactive {
+    background-color: var(--error-color);
+}
+
+/* Placeholder styling for camera connection */
+.camera-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-muted);
+}
+
+.camera-placeholder svg {
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .content {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 992px) {
+    .video-section, .plate-container {
+        flex-direction: column;
+    }
+    
+    .video-js {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .transactions {
+        padding: 15px 10px;
+    }
+    
+    th, td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    .plate-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

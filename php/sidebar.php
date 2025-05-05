@@ -1,36 +1,48 @@
 <div class="sidebar">
     <div class="tools">
-        <div class="menu-item">
-            <img src="/v-chain/images/Vlink.png" class="logo" alt="Logo">
-        </div>
-        <div class="menu-item">
-            <a href="/v-chain/php/Dashboard.php" class="menu-link">
-                <img src="/v-chain/images/dash.png" alt="">
-                <span>Dashboard</span>
-            </a>
-        </div>
-        <div class="menu-item">
-            <a href="/v-chain/php/transaction.php" class="menu-link">
-                <img src="/v-chain/images/trans.png" alt="">
-                <span>Transactions</span>
-            </a>
-        </div>
-        <div class="menu-item">
-            <a href="/v-chain/php/registry.php" class="menu-link active">
-                <img src="/v-chain/images/group.png" alt="">
-                <span>Registry</span>
-            </a>
+        <!-- Top: Logo -->
+        <div class="top">
+            <div class="logo-container">
+                <img src="/v-chain/images/Vlink.png" class="logo" alt="Logo">
+            </div>
         </div>
 
-        <div class="spacer"></div> <!-- Pushes logout down -->
+        <!-- Middle: Menu Items -->
+        <div class="middle">
+            <div class="menu-item">
+                <a href="/v-chain/php/Dashboard.php" class="menu-link">
+                    <img src="/v-chain/images/home.png" alt="">
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="/v-chain/php/statistics.php" class="menu-link">
+                    <img src="/v-chain/images/statistics.png" alt="">
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="/v-chain/php/transaction.php" class="menu-link">
+                    <img src="/v-chain/images/clock.png" alt="">
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="/v-chain/php/registry.php" class="menu-link">
+                    <img src="/v-chain/images/folder.png" alt="">
+                </a>
+            </div>
+        </div>
 
-        <div class="menu-item logout" id="logout" onclick="logout()">
-            <a href="" class="menu-link">
-                <img src="/v-chain/images/logout.png" alt="">
-            </a>
+        <!-- Bottom: Logout -->
+        <div class="bottom">
+            <div class="menu-item logout" id="logout" onclick="logout()">
+                <a href="" class="menu-link">
+                    <img src="/v-chain/images/sign-out.png" alt="">
+                </a>
+            </div>
         </div>
     </div>
 </div>
+
+
 <script type="module">
     import { logout } from "/v-chain/js/firebase.js";
 

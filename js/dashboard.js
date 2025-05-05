@@ -81,14 +81,23 @@ async function sendToServer(videoElement, canvasElement, plateId, endpoint, came
 }
 
 async function logVehicle(plate) {
-    fetch('../controller/log_vehicle.php', {
-        method: 'POST',
-        body: JSON.stringify({ plate_number: plate }),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(response => response.json())
-    .then(data => console.log("Log status: ", data))
-    .catch(error => console.error("Error logging vehicle:", error));
+    try {
+        const response = await fetch('../controller/log_vehicle.php', {
+            method: 'POST',
+            body: JSON.stringify({ plate_number: plate }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await response.json();
+        console.log("Log status: ", data);
+
+        // Add a 3000ms delay before fetching logs
+        setTimeout(() => {
+            fetchLogs();
+        }, 3000);
+
+    } catch (error) {
+        console.error("Error logging vehicle:", error);
+    }
 }
 
 function startCapturing() {
@@ -188,8 +197,6 @@ async function fetchLogs() {
     }
 }
 
-// Fetch logs every 5 seconds
-setInterval(fetchLogs, 3000);
 
 fetchLogs();
 
