@@ -9,7 +9,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
 const contractPath = path.join(__dirname, '../build/contracts/VehicleLog.json');
 const contractJson = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
 
-const contractAddress = "0xb9954e7eE9bA708D7619030d98e182e23f2613cf"; // Replace this
+const contractAddress = "0x6fca09e6755F6b5Ce47a1Ef61Cbb5477082aBFe5"; // Replace this
 const vehicleLog = new web3.eth.Contract(contractJson.abi, contractAddress);
 
 // Helper function to log a vehicle entry
