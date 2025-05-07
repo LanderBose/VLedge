@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userEmail = sessionStorage.getItem("userEmail");
     if (!userEmail) {
         alert("Session expired. Please log in again.");
-        window.location.href = "/v-chain/php/Admin_Login.php";
+        window.location.href = "/VLedge/php/Admin_Login.php";
         return;
     }
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (enteredPin.length === 6) {
             if (enteredPin === storedPin) {
                 alert("PIN verified successfully!");
-                window.location.href = "/v-chain/php/Dashboard.php"; 
+                window.location.href = "/VLedge/php/Dashboard.php"; 
             } else {
                 alert("Incorrect PIN. Please try again.");
                 pinBoxes.forEach(box => box.value = ""); 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     cancelButton.addEventListener("click", function () {
-        window.location.replace("/v-chain/php/Admin_Login.php"); 
+        window.location.replace("/VLedge/php/Admin_Login.php"); 
     });
 
     pinBoxes[0].focus();

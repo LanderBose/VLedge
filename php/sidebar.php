@@ -3,30 +3,25 @@
         <!-- Top: Logo -->
         <div class="top">
             <div class="logo-container">
-                <img src="/v-chain/images/Vlink.png" class="logo" alt="Logo">
+                <img src="../images/icon.png" class="logo" alt="Logo">
             </div>
         </div>
 
         <!-- Middle: Menu Items -->
         <div class="middle">
             <div class="menu-item">
-                <a href="/v-chain/php/Dashboard.php" class="menu-link">
-                    <img src="/v-chain/images/home.png" alt="">
+                <a href="../php/Dashboard.php" class="menu-link">
+                    <img src="../images/home.png" alt="">
                 </a>
             </div>
             <div class="menu-item">
-                <a href="/v-chain/php/statistics.php" class="menu-link">
-                    <img src="/v-chain/images/statistics.png" alt="">
+                <a href="../php/statistics.php" class="menu-link">
+                    <img src="../images/statistics.png" alt="">
                 </a>
             </div>
             <div class="menu-item">
-                <a href="/v-chain/php/transaction.php" class="menu-link">
-                    <img src="/v-chain/images/clock.png" alt="">
-                </a>
-            </div>
-            <div class="menu-item">
-                <a href="/v-chain/php/registry.php" class="menu-link">
-                    <img src="/v-chain/images/folder.png" alt="">
+                <a href="../php/registry.php" class="menu-link">
+                    <img src="../images/folder.png" alt="">
                 </a>
             </div>
         </div>
@@ -35,7 +30,7 @@
         <div class="bottom">
             <div class="menu-item logout" id="logout" onclick="logout()">
                 <a href="" class="menu-link">
-                    <img src="/v-chain/images/sign-out.png" alt="">
+                    <img src="../images/sign-out.png" alt="">
                 </a>
             </div>
         </div>
@@ -44,7 +39,7 @@
 
 
 <script type="module">
-    import { logout } from "/v-chain/js/firebase.js";
+    import { logout } from "../js/firebase.js";
 
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("logout").addEventListener("click", function (event) {

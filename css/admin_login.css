@@ -1,112 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+:root {
+    --primary-color: #6e222e;
+    --primary-color-dark: #52171f;
+    --secondary-color: #2c2c2c;
+    --bg-color: #1e1e1e;
+    --card-bg: #2a2a2a;
+    --text-color: #ffffff;
+    --text-muted: #b0b0b0;
+    --border-color: #3a3a3a;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --font-title: 'Michroma', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+    background-color: var(--primary-color-dark);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: url('../images/admin_page_bg.png') no-repeat center center/cover;
 }
 
 .container {
-    display: flex;
     width: 1000px;
-    height: 750px;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    align-items: center;
+    height: 700px;
+    background-color: #d9d3ce;
+    display: flex;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
-
 
 .left-panel {
-    background: #f5f2e9; 
-    width: 60%;
-    height: 110%; 
+    flex: 1.1;
+    background-color: var(--bg-color);
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
-    
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 100px; 
-}
-h1 {
-    font-family: 'Bagel Fat One', sans-serif;
-    font-size: 64px;
-    font-weight: normal; 
-    color: rgba(44, 73, 87, 1);
-    text-align: center;
+    justify-content: center;
 }
 
-h2 {
-    font-family: 'League Spartan', sans-serif;
-    font-weight: 600;
-    font-size: 40px;
-}
-
-p{
-    font-family: 'Inter', sans-serif;
-    font-size: 25px;
-    font-weight: 400; 
-    letter-spacing: 0.5px;
-    margin-top: -30px;
+.left-panel img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .right-panel {
-    background: #1d3c54; 
-    width: 60%;
-    height: 100%;
-    color: white;
+    flex: 0.9;
+    padding: 60px 40px;
+    background-color: #e1ddd8;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    gap: 30px;
+}
 
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+.right-panel h2 {
+    text-align: center;
+    font-family: var(--font-title);
+    color: black;
+    font-size: 30px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 80%;
     align-items: center;
-}
-
-input {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 5px;
+    gap: 30px;
     width: 100%;
-    font-family: 'League Spartan', sans-serif;
-    font-weight: 300;
-    font-size: 17px;
-    background: transparent;
-    color: white;
 }
 
-button {
-    width: 100px;
-    height: 30px;
-    padding: 5px 10px;
+input[type="email"],
+input[type="password"] {
+    padding: 12px 14px;
     border: none;
     border-radius: 5px;
-    background: #fff;
-    color: #24475c;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    transition: background 0.3s;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 90%;
 }
 
-button:hover {
-    background: #ddd;
+button[type="submit"] {
+    padding: 12px;
+    background-color: var(--primary-color-dark);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+    width: 90%;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-color);
 }

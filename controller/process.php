@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageData = $data['image'];
     $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
     $imageData = base64_decode($imageData);
-    $imagePath = "C:/xampp/htdocs/v-chain/capture.jpg";
+    $imagePath = "C:/xampp/htdocs/VLedge/capture.jpg";
     file_put_contents($imagePath, $imageData);
 
     // Run OpenALPR

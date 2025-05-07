@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter PIN</title>
-    <link rel="stylesheet" href="/v-chain/css/Pin_Security.css">
+    <link rel="stylesheet" href="/VLedge/css/Pin_Security.css">
     
 </head>
 <body>

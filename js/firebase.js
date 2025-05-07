@@ -47,7 +47,7 @@ export function logout() {
   return signOut(auth)
     .then(() => {   
       alert("User logged out");
-      window.location.href = "/v-chain/php/Admin_Login.php";
+      window.location.href = "/VLedge/php/Admin_Login.php";
     })
     .catch((error) => {
       console.error("Error logging out:", error.message);

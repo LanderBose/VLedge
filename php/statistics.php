@@ -39,11 +39,21 @@
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon guest-icon">
-                <i class="fas fa-hourglass"></i>
+            <div class="stat-icon house-icon">
+                <i class="fas fa-house"></i>
             </div>
             <div class="stat-info">
-                <div class="stat-label">Total Guest Vehicle</div>
+                <div class="stat-label">Total HOs Vehicle Inside</div>
+                <div class="stat-value">191</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon guest-icon">
+                <i class="fas fa-person"></i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-label">Total Guest Vehicle Inside</div>
                 <div class="stat-value">34</div>
             </div>
         </div>
@@ -53,7 +63,7 @@
                 <i class="fas fa-car"></i>
             </div>
             <div class="stat-info">
-                <div class="stat-label">Four Wheel Vehicle</div>
+                <div class="stat-label">Four Wheel Vehicle Inside</div>
                 <div class="stat-value">102</div>
             </div>
         </div>
@@ -63,10 +73,12 @@
                 <i class="fas fa-motorcycle"></i>
             </div>
             <div class="stat-info">
-                <div class="stat-label">Motorcycle</div>
+                <div class="stat-label">Motorcycle Inside</div>
                 <div class="stat-value">191</div>
             </div>
         </div>
+
+        
     </div>
 
     <!-- Charts Section -->

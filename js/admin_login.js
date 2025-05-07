@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Login successful:", user);
                   sessionStorage.setItem("userEmail", user.email);
 
-                window.location.href = "/v-chain/php/Pin_Security.php"; 
+                window.location.href = "/VLedge/php/Pin_Security.php"; 
             }
         } catch (error) {
             console.error("Login failed:", error.message);

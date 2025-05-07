@@ -103,8 +103,8 @@ async function logVehicle(plate) {
 function startCapturing() {
     setInterval(() => {
         if (capturing) { // Capture only if allowed
-            sendToServer(document.getElementById('camera1'), document.getElementById('canvas1'), "plate1", "/v-chain/controller/process.php", "Camera 1");
-            sendToServer(document.getElementById('camera2'), document.getElementById('canvas2'), "plate2", "/v-chain/controller/process2.php", "Camera 2");
+            sendToServer(document.getElementById('camera1'), document.getElementById('canvas1'), "plate1", "/VLedge/controller/process.php", "Camera 1");
+            sendToServer(document.getElementById('camera2'), document.getElementById('canvas2'), "plate2", "/VLedge/controller/process2.php", "Camera 2");
         }
     }, 3000);
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transactions</title>
-    <link rel="stylesheet" href="/v-chain/css/transaction.css">
-    <link rel="stylesheet" href="/v-chain/css/sidebar.css">
+    <link rel="stylesheet" href="../css/transaction.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -71,7 +71,7 @@
     </div>
 </div>
 
-<script src="/v-chain/js/transaction.js"></script>
+<script src="../js/transaction.js"></script>
 
 </body>
 </html>
